@@ -224,3 +224,14 @@ public class LatestBattleOcrTests
     [Theory][InlineData("허상의 정박지")][InlineData("6회")][InlineData("광기의 동굴|부활 6회")]
     public void StillRequiresBothObjectiveCues(string text)=>Assert.False(RecognitionRules.HasTextEvidence(text.Split('|'),["허상의 정박지"],["6회"]));
 }
+
+public class PurchaseChargeRegressionTests
+{
+    [Theory][InlineData("충전 완료",false)][InlineData("충전",false)][InlineData("충전하시겠습니까?",true)][InlineData("충전할까요?",true)][InlineData("재료가 부족합니다",true)][InlineData("구매 확인",true)]
+    public void ProductionPurchasePhrasesDistinguishChargeTitle(string ocr,bool expected)
+    {
+        using var doc=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"targets.json")));
+        var phrases=doc.RootElement.GetProperty("purchase").GetProperty("Text").EnumerateArray().Select(x=>x.GetString()!).ToArray();
+        Assert.Equal(expected,RecognitionRules.HasTextEvidence([ocr],phrases,[]));
+    }
+}

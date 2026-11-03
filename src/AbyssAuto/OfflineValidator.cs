@@ -6,9 +6,9 @@ public static class OfflineValidator
 {
     private static readonly Dictionary<string,string[]> Expected=new()
     {
-        ["chat"]=["main","battle","battle-live-01","battle-live-02","battle-dither","battle-live-03"], ["menu"]=["menu"], ["abyss"]=["menu"],
+        ["chat"]=["main","battle","battle-live-01","battle-live-02","battle-dither","battle-live-03","charge-title-live"], ["menu"]=["menu"], ["abyss"]=["menu"],
         ["husang"]=["destinations"], ["kwanggi"]=["destinations"], ["moolgil"]=["destinations"],
-        ["enter"]=["enter"], ["result"]=["result"], ["retry"]=["reward"], ["battle"]=["battle","battle-live-01","battle-live-02","battle-dither","battle-live-03"],
+        ["enter"]=["enter"], ["result"]=["result"], ["retry"]=["reward"], ["battle"]=["battle","battle-live-01","battle-live-02","battle-dither","battle-live-03","charge-title-live"],
         ["skip"]=["boss-scene"], ["purchase"]=[], ["other_dungeon"]=["reward"],
         ["incapacitated"]=["incapacitated-husang","incapacitated-goddess","incapacitated-live"],
         ["revive"]=["incapacitated-husang","incapacitated-goddess","incapacitated-live"],
@@ -22,7 +22,7 @@ public static class OfflineValidator
         try
         {
             var config=new Configuration();var vision=new Vision(config);
-            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02","battle-dither","incapacitated-husang","incapacitated-goddess","incapacitated-live","boss-scene","battle-live-03","ui-hidden-live"];
+            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02","battle-dither","incapacitated-husang","incapacitated-goddess","incapacitated-live","boss-scene","battle-live-03","ui-hidden-live","charge-title-live"];
             var rows=new List<object>();int failures=0,checks=0;
             foreach(var screen in screens)
             {
