@@ -211,3 +211,16 @@ public class ExactReviveTextTests
     [Fact]public void DoNotJoinFarApartLabelsIntoClickTarget()
     {Assert.Empty(OcrTextGroups.ExactPhrases([new("여기서",new(900,750,50,24)),new("부활",new(1200,750,40,24))],["여기서 부활"]));}
 }
+
+public class LatestBattleOcrTests
+{
+    [Fact]public void SuppliedFightSurvivesRevivalWordOcrCorruption()
+    {
+        using var doc=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"battle-live-03-ocr.json")));
+        var lines=doc.RootElement.GetProperty("lines").EnumerateArray().Select(x=>x.GetString()!).ToArray();
+        Assert.False(RecognitionRules.HasTextEvidence(lines,["허상의 정박지"],["부활 6회"]));
+        Assert.True(RecognitionRules.HasTextEvidence(lines,["허상의 정박지"],["6회"]));
+    }
+    [Theory][InlineData("허상의 정박지")][InlineData("6회")][InlineData("광기의 동굴|부활 6회")]
+    public void StillRequiresBothObjectiveCues(string text)=>Assert.False(RecognitionRules.HasTextEvidence(text.Split('|'),["허상의 정박지"],["6회"]));
+}

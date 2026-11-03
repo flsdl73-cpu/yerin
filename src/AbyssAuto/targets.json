@@ -170,9 +170,10 @@
     "MinimumScore": 2,
     "RequireText": true,
     "RequiredText": [
-      "부활 6회"
+      "6회"
     ],
-    "OcrFilter": "dither-gold"
+    "OcrFilter": "dither-gold",
+    "WhiteTextFallback": true
   },
   "skip": {
     "Region": {

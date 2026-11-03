@@ -9,6 +9,7 @@
     <Compile Include="../../src/AbyssAuto/WindowsInputPackets.cs" Link="WindowsInputPackets.cs" />
     <Compile Include="../../src/AbyssAuto/RevivalRules.cs" Link="RevivalRules.cs" />
     <Compile Include="../../src/AbyssAuto/OcrTextGroups.cs" Link="OcrTextGroups.cs" />
+    <None Include="../../validation/battle-live-03-ocr.json" Link="battle-live-03-ocr.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../validation/live-battle-ocr.json" Link="live-battle-ocr.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../validation/fixtures/*.gray" Link="fixtures/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
