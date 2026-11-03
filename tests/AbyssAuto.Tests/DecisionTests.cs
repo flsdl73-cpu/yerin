@@ -138,7 +138,7 @@ public class WindowsInputPacketTests
         Assert.Equal(40,System.Runtime.InteropServices.Marshal.SizeOf<WindowsInputPacket>());
         Assert.Equal(8,System.Runtime.InteropServices.Marshal.OffsetOf<WindowsInputPacket>(nameof(WindowsInputPacket.Keyboard)).ToInt32());
     }
-    [Theory][InlineData(0x01)][InlineData(0x39)]
+    [Theory][InlineData(0x01)][InlineData(0x39)][InlineData(0x30)]
     public void ScanCodeDownAndUpHaveCorrectFlagsAndMarker(int scan)
     {
         var down=WindowsInputPackets.Key((ushort)scan,false);var up=WindowsInputPackets.Key((ushort)scan,true);

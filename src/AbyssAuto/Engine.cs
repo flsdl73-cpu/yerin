@@ -14,7 +14,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
     private string destination="husang";
     private bool skip;
     private PlayMode playMode;
-    private bool autoRevive;
+    private bool autoRevive,autoFood;
     private long frameId,capturedAt;
     private long? lastRevivalSent;
     private async Task<Detection> Detect(Bitmap frame,string name,CancellationToken token)
@@ -26,9 +26,9 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
         var next=window.Capture(); lastFrame?.Dispose(); lastFrame=next; evidence.Clear();frameId++;capturedAt=Stopwatch.GetTimestamp(); return lastFrame;
     }
     private void Set(Stage value) { Stage=value; journal.Write($"단계: {value}"); Changed?.Invoke(value); }
-    public async Task Run(string destination, bool skip, int limit, bool resume, PlayMode playMode, bool autoRevive, CancellationToken token)
+    public async Task Run(string destination, bool skip, int limit, bool resume, PlayMode playMode, bool autoRevive, bool autoFood, CancellationToken token)
     {
-        this.destination=destination; this.skip=skip; this.playMode=playMode; this.autoRevive=autoRevive; Count=0;run=Stopwatch.StartNew();
+        this.destination=destination; this.skip=skip; this.playMode=playMode; this.autoRevive=autoRevive; this.autoFood=autoFood; Count=0;run=Stopwatch.StartNew();
         try
         {
             if(!config.Targets[destination].Images.Any(f=>File.Exists(Path.Combine(config.Root,"images",f))))
@@ -180,7 +180,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
     }
     private async Task Battle(CancellationToken token)
     {
-        var timer=Stopwatch.StartNew();var unknown=new Stopwatch();
+        var timer=Stopwatch.StartNew();var unknown=new Stopwatch();bool foodSent=false;
         while(timer.Elapsed.TotalSeconds<config.Scenario.BattleTimeoutSeconds)
         {
             var frame=await PrepareFrame(token);
@@ -195,7 +195,22 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
                 await Task.Delay(450,token);continue;
             }
             if((await Detect(frame,"result",token)).Passed) return;
-            if((await Detect(frame,"battle",token)).Passed) unknown.Reset();
+            if((await Detect(frame,"battle",token)).Passed)
+            {
+                unknown.Reset();
+                if(autoFood&&!foodSent)
+                {
+                    var dead=await Detect(frame,"incapacitated",token);
+                    var reviveButton=await Detect(frame,"revive",token);
+                    if(!dead.Passed&&!reviveButton.Passed&&Stopwatch.GetElapsedTime(capturedAt).TotalSeconds<=1.5)
+                    {
+                        token.ThrowIfCancellationRequested();journal.Input("입장당 밥 먹기 B 입력 시도");
+                        await input!.Key(0x30,token);foodSent=true;
+                        journal.Write("B 입력 전달 성공 · 이번 입장 음식 입력 완료 (실제 섭취 여부는 미확인)");
+                        await Task.Delay(450,token);continue;
+                    }
+                }
+            }
             else
             {
                 if(!unknown.IsRunning) unknown.Start();
