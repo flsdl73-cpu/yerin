@@ -9,6 +9,9 @@ public sealed class MainForm : Form
     private readonly Label status=new() {Text="화면 자료를 등록하고 인식을 검증해주세요.",AutoSize=false,Height=80,Dock=DockStyle.Top,Font=new Font("맑은 고딕",18,FontStyle.Bold)};
     private readonly Label metrics=new() {AutoSize=true,Text="완료 0판  |  경과 00:00  |  평균 —"};
     private readonly CheckBox skip=new() {Text="장면·대화 넘기기",Checked=false,AutoSize=true};
+    private readonly CheckBox solo=new() {Text="혼자하기",Checked=true,AutoSize=true};
+    private readonly CheckBox twoOrMore=new() {Text="2인이상",AutoSize=true};
+    private bool changingPlayMode;
     private readonly CheckBox resume=new() {Text="현재 화면 재판별 후 시작",AutoSize=true};
     private readonly NumericUpDown limit=new() {Minimum=0,Maximum=99999,Value=1,Width=75};
     private readonly TextBox logs=new() {Multiline=true,ReadOnly=true,ScrollBars=ScrollBars.Vertical,Dock=DockStyle.Fill};
@@ -19,19 +22,24 @@ public sealed class MainForm : Form
     private readonly List<Control> locked=[];
     public MainForm()
     {
-        Text=$"어비스 오토 · {Application.ProductVersion.Split('+')[0]} · 화면 검증 우선";Width=830;Height=570;MinimumSize=new(780,530);
+        Text=$"어비스 오토 · {Application.ProductVersion.Split('+')[0]} · 화면 검증 우선";Width=830;Height=610;MinimumSize=new(780,570);
         Font=new Font("맑은 고딕",10);BackColor=Color.FromArgb(245,247,245);
         destination.Items.AddRange(["허상의 정박지","광기의 동굴","흩어진 물길"]);destination.SelectedIndex=0;
-        var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(20),RowCount=5,ColumnCount=1};
-        root.RowStyles.Add(new(SizeType.Absolute,60));root.RowStyles.Add(new(SizeType.Absolute,90));root.RowStyles.Add(new(SizeType.Absolute,80));root.RowStyles.Add(new(SizeType.Absolute,60));root.RowStyles.Add(new(SizeType.Percent,100));
+        var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(20),RowCount=6,ColumnCount=1};
+        root.RowStyles.Add(new(SizeType.Absolute,60));root.RowStyles.Add(new(SizeType.Absolute,40));root.RowStyles.Add(new(SizeType.Absolute,90));root.RowStyles.Add(new(SizeType.Absolute,80));root.RowStyles.Add(new(SizeType.Absolute,60));root.RowStyles.Add(new(SizeType.Percent,100));
         var top=new FlowLayoutPanel {Dock=DockStyle.Fill};top.Controls.AddRange([new Label {Text="목적지",AutoSize=true},destination,start,stop]);
+        var modes=new FlowLayoutPanel {Dock=DockStyle.Fill};modes.Controls.AddRange([new Label {Text="실행 유형",AutoSize=true},solo,twoOrMore]);
+        var modeHelp=new ToolTip();modeHelp.SetToolTip(solo,"목표 횟수가 남으면 다시 하기로 다음 전투를 시작합니다.");modeHelp.SetToolTip(twoOrMore,"목표 횟수가 남으면 다른 던전 가기 → 목적지 선택 → 입장으로 진행합니다.");FormClosed+=(_,_)=>modeHelp.Dispose();
         var settings=new FlowLayoutPanel {Dock=DockStyle.Fill};settings.Controls.AddRange([new Label {Text="목표 횟수 (0=무제한)",AutoSize=true},limit,skip,resume,new Label {Text="부활·음식·재접속: 자료 미등록 / 비활성",AutoSize=true,ForeColor=Color.DimGray}]);
         var tools=new FlowLayoutPanel {Dock=DockStyle.Fill};
         var import=new Button {Text="화면·템플릿 등록",AutoSize=true};var inspect=new Button {Text="저장 화면 인식 검사",AutoSize=true};
         var folder=new Button {Text="설정 폴더",AutoSize=true};var detail=new CheckBox {Text="상세 로그",Checked=true,AutoSize=true};
-        tools.Controls.AddRange([import,inspect,folder,detail]);root.Controls.Add(top);root.Controls.Add(status);root.Controls.Add(settings);root.Controls.Add(tools);
+        tools.Controls.AddRange([import,inspect,folder,detail]);root.Controls.Add(top);root.Controls.Add(modes);root.Controls.Add(status);root.Controls.Add(settings);root.Controls.Add(tools);
         var bottom=new Panel {Dock=DockStyle.Fill};metrics.Dock=DockStyle.Top;bottom.Controls.Add(logs);bottom.Controls.Add(metrics);root.Controls.Add(bottom);Controls.Add(root);
-        locked.AddRange([destination,limit,skip,resume,import,inspect]);
+        locked.AddRange([destination,solo,twoOrMore,limit,skip,resume,import,inspect]);
+        try {var saved=RunOptions.Load();solo.Checked=saved.PlayMode==PlayMode.Solo;twoOrMore.Checked=!solo.Checked;}catch(Exception error){Log($"실행 유형 설정 읽기 실패: {error.Message}");}
+        solo.CheckedChanged+=(_,_)=>ChooseMode(solo,twoOrMore);
+        twoOrMore.CheckedChanged+=(_,_)=>ChooseMode(twoOrMore,solo);
         start.Click+=async (_,_)=>await Start();stop.Click+=(_,_)=>Stop();import.Click+=(_,_)=>Import();inspect.Click+=async (_,_)=>await Inspect();
         detail.CheckedChanged+=(_,_)=>logs.Visible=detail.Checked;
         folder.Click+=(_,_)=>Process.Start(new ProcessStartInfo("explorer.exe",AppContext.BaseDirectory){UseShellExecute=true});
@@ -45,6 +53,19 @@ public sealed class MainForm : Form
     }
     protected override void OnHandleDestroyed(EventArgs e) {Native.UnregisterHotKey(Handle,10);base.OnHandleDestroyed(e);}
     protected override void WndProc(ref Message m) {if(m.Msg==0x0312 && m.WParam==10) Stop();base.WndProc(ref m);}
+    private void ChooseMode(CheckBox selected,CheckBox other)
+    {
+        if(changingPlayMode)return;
+        changingPlayMode=true;
+        try
+        {
+            if(selected.Checked)other.Checked=false;
+            else if(!other.Checked)selected.Checked=true;
+            new RunOptions {PlayMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked)}.Save();
+        }
+        catch(Exception error){Log($"실행 유형 저장 실패: {error.Message}");}
+        finally {changingPlayMode=false;}
+    }
     private void Stop() {cancellation?.Cancel();status.Text="사용자 정지 요청";}
     private void Log(string text)
     {
@@ -57,7 +78,10 @@ public sealed class MainForm : Form
         if(cancellation!=null)return;
         try
         {
+            var playMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked);
+            new RunOptions {PlayMode=playMode}.Save();
             var config=new Configuration();var window=new GameWindow(config.Scenario);var vision=new Vision(config);var journal=new Journal();journal.Message+=Log;
+            journal.Write($"실행 유형: {RunOptions.Label(playMode)}");
             var engine=new Engine(config,window,vision,journal);
             engine.Changed+=stage=>BeginInvoke(()=>status.Text=StageName(stage));
             engine.Completed+=(number,_)=>BeginInvoke(()=>count=number);
@@ -66,14 +90,14 @@ public sealed class MainForm : Form
             if(target!="husang")throw new InvalidOperationException("광기의 동굴·흩어진 물길은 실제 전투 화면과 영역 검증 후 지원합니다.");
             cancellation=new();var token=cancellation.Token;var assist=skip.Checked;var maximum=(int)limit.Value;var recover=resume.Checked;
             foreach(var control in locked)control.Enabled=false;start.Enabled=false;count=0;elapsed.Restart();
-            await Task.Run(()=>engine.Run(target,assist,maximum,recover,token));
+            await Task.Run(()=>engine.Run(target,assist,maximum,recover,playMode,token));
             status.Text="정지됨 · 상세 로그를 확인하세요.";
         }
         catch(Exception error) {Log(error.ToString());status.Text=error.Message;}
         finally {elapsed.Stop();cancellation?.Dispose();cancellation=null;foreach(var control in locked)control.Enabled=true;start.Enabled=true;}
     }
     private static string StageName(Stage stage)=>stage switch {
-        Stage.Menu=>"메뉴 열림 확인",Stage.Abyss=>"어비스 선택",Stage.Destination=>"목적지 선택",Stage.Enter=>"입장 확인",Stage.Battle=>"전투가 끝나기를 기다리고 있어요",Stage.Result=>"결과 확인",Stage.Retry=>"다시 하기",_=>stage.ToString()};
+        Stage.Menu=>"메뉴 열림 확인",Stage.Abyss=>"어비스 선택",Stage.Destination=>"목적지 선택",Stage.Enter=>"입장 확인",Stage.Battle=>"전투가 끝나기를 기다리고 있어요",Stage.Result=>"결과 확인",Stage.Retry=>"다시 하기",Stage.OtherDungeon=>"다른 던전 가기",_=>stage.ToString()};
     private void Import()
     {
         try

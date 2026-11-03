@@ -5,3 +5,5 @@ artifacts/
 **/logs/
 **/captures/
 *.user
+**/run-options.json
+**/run-options.json.tmp

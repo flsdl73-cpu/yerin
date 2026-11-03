@@ -12,6 +12,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
     private Stopwatch run=new();
     private string destination="husang";
     private bool skip;
+    private PlayMode playMode;
     private async Task<Detection> Detect(Bitmap frame,string name,CancellationToken token)
     {
         var result=await vision.Detect(frame,name,token); evidence[name]=result; return result;
@@ -21,9 +22,9 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
         var next=window.Capture(); lastFrame?.Dispose(); lastFrame=next; evidence.Clear(); return lastFrame;
     }
     private void Set(Stage value) { Stage=value; journal.Write($"단계: {value}"); Changed?.Invoke(value); }
-    public async Task Run(string destination, bool skip, int limit, bool resume, CancellationToken token)
+    public async Task Run(string destination, bool skip, int limit, bool resume, PlayMode playMode, CancellationToken token)
     {
-        this.destination=destination; this.skip=skip; Count=0;run=Stopwatch.StartNew();
+        this.destination=destination; this.skip=skip; this.playMode=playMode; Count=0;run=Stopwatch.StartNew();
         try
         {
             if(!config.Targets[destination].Images.Any(f=>File.Exists(Path.Combine(config.Root,"images",f))))
@@ -43,11 +44,12 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
                     case Stage.Enter: await Transition("enter","battle",true,config.Scenario.ButtonTimeoutSeconds,token);Set(Stage.Battle);break;
                     case Stage.Battle: await Battle(token);Set(Stage.Result);break;
                     case Stage.Result:
-                        await Transition("result","retry",false,config.Scenario.RetryTimeoutSeconds,token);
+                        await Transition("result",RepeatRoute.RewardTarget(playMode),false,config.Scenario.RetryTimeoutSeconds,token);
                         Count++; Completed?.Invoke(Count,run.Elapsed);journal.Write($"{Count}판 완료");
                         if(limit>0 && Count>=limit) {System.Media.SystemSounds.Asterisk.Play();journal.Write("목표 횟수 완료. 보상 화면에서 정지합니다.");return;}
-                        Set(Stage.Retry);break;
+                        Set(RepeatRoute.RewardStage(playMode));break;
                     case Stage.Retry: await Transition("retry","battle",false,config.Scenario.RetryTimeoutSeconds,token);Set(Stage.Battle);break;
+                    case Stage.OtherDungeon: await Transition("other_dungeon",destination,false,config.Scenario.ButtonTimeoutSeconds,token);Set(Stage.Destination);break;
                 }
             }
         }
@@ -62,7 +64,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
     private async Task<Stage> Classify(bool resume,CancellationToken token)
     {
         var frame=Capture(); await Guard(frame,token); var candidates=new List<Stage>();
-        foreach(var (name,stage) in new (string,Stage)[]{("result",Stage.Result),("retry",Stage.Retry),("enter",Stage.Enter),(destination,Stage.Destination),("menu",Stage.Abyss),("battle",Stage.Battle)})
+        foreach(var (name,stage) in new (string,Stage)[]{("result",Stage.Result),(RepeatRoute.RewardTarget(playMode),RepeatRoute.RewardStage(playMode)),("enter",Stage.Enter),(destination,Stage.Destination),("menu",Stage.Abyss),("battle",Stage.Battle)})
             if((await Detect(frame,name,token)).Passed) candidates.Add(stage);
         var mainConfirmed=candidates.Count==0 && (await Detect(frame,"chat",token)).Passed;
         var selected=StartStagePolicy.Resolve(resume,candidates,mainConfirmed);

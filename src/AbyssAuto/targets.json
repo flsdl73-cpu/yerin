@@ -209,5 +209,29 @@
     "MinimumScore": 2,
     "RequireText": true,
     "OcrFilter": "dither-smooth"
+  },
+  "other_dungeon": {
+    "Region": {
+      "Left": 738,
+      "Top": 777,
+      "Right": 908,
+      "Bottom": 852
+    },
+    "OcrRegion": {
+      "Left": 750,
+      "Top": 797,
+      "Right": 894,
+      "Bottom": 835
+    },
+    "Text": [
+      "다른 던전 가기"
+    ],
+    "Images": [],
+    "MinimumScore": 3,
+    "RequireText": true,
+    "RequireColor": true,
+    "Color": "green",
+    "WhiteTextFallback": true,
+    "Threshold": 0.75
   }
 }

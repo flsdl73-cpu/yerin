@@ -111,3 +111,22 @@ public class DitherDetectionTests
         =>Assert.False(RecognitionRules.HasTextEvidence(["XXXXXX"],["허상의 정박지"],["부활 6회"]));
     [Fact] public void RejectMalformedImage()=>Assert.Throws<ArgumentException>(()=>DitherRules.Ratio(new byte[4],3,3));
 }
+
+public class RepeatRouteTests
+{
+    [Fact]public void DefaultIsVerifiedSoloRoute()=>Assert.Equal(PlayMode.Solo,new RunOptions().PlayMode);
+    [Fact]public void SoloKeepsRetryAndMultiUsesOtherDungeon()
+    {
+        Assert.Equal("retry",RepeatRoute.RewardTarget(PlayMode.Solo));Assert.Equal(Stage.Retry,RepeatRoute.RewardStage(PlayMode.Solo));
+        Assert.Equal("other_dungeon",RepeatRoute.RewardTarget(PlayMode.TwoOrMore));Assert.Equal(Stage.OtherDungeon,RepeatRoute.RewardStage(PlayMode.TwoOrMore));
+    }
+    [Theory][InlineData(true,false,PlayMode.Solo)][InlineData(false,true,PlayMode.TwoOrMore)]
+    public void ExactlyOneSelection(bool solo,bool group,PlayMode expected)=>Assert.Equal(expected,RunOptions.FromChecks(solo,group));
+    [Theory][InlineData(true,true)][InlineData(false,false)]
+    public void RejectConflictingOrEmptySelection(bool solo,bool group)=>Assert.Throws<InvalidOperationException>(()=>RunOptions.FromChecks(solo,group));
+    [Fact]public void RewardResumeUsesOnlySelectedAction()
+    {
+        Assert.Equal(Stage.OtherDungeon,StartStagePolicy.Resolve(true,[RepeatRoute.RewardStage(PlayMode.TwoOrMore)],false));
+        Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(false,[Stage.OtherDungeon],false));
+    }
+}

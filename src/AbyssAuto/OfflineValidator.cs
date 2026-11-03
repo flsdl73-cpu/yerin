@@ -9,7 +9,7 @@ public static class OfflineValidator
         ["chat"]=["main","battle","battle-live-01","battle-live-02","battle-dither"], ["menu"]=["menu"], ["abyss"]=["menu"],
         ["husang"]=["destinations"], ["kwanggi"]=["destinations"], ["moolgil"]=["destinations"],
         ["enter"]=["enter"], ["result"]=["result"], ["retry"]=["reward"], ["battle"]=["battle","battle-live-01","battle-live-02","battle-dither"],
-        ["skip"]=[], ["purchase"]=[]
+        ["skip"]=[], ["purchase"]=[], ["other_dungeon"]=["reward"]
     };
     public static async Task<int> Run(string screenDirectory,string outputDirectory)
     {

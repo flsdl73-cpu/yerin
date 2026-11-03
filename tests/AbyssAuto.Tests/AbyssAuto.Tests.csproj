@@ -5,6 +5,7 @@
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
     <Compile Include="../../src/AbyssAuto/DecisionRules.cs" Link="DecisionRules.cs" />
+    <Compile Include="../../src/AbyssAuto/RunOptions.cs" Link="RunOptions.cs" />
     <None Include="../../validation/live-battle-ocr.json" Link="live-battle-ocr.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../validation/fixtures/*.gray" Link="fixtures/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

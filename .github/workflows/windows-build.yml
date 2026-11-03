@@ -33,10 +33,10 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
-      - name: Upload small update for v0.3.0
+      - name: Upload small update for existing installation
         uses: actions/upload-artifact@v4
         with:
-          name: abyss-auto-update-from-0.3
+          name: abyss-auto-update
           path: artifacts/update/
           if-no-files-found: error
           retention-days: 14

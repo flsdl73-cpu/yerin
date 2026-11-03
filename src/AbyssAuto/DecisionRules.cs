@@ -42,7 +42,7 @@ public static class WhiteTextRules
     public static bool IsGlyph(byte r,byte g,byte b) => Math.Min(r,Math.Min(g,b))>=190 && Math.Max(r,Math.Max(g,b))-Math.Min(r,Math.Min(g,b))<=60;
 }
 
-public enum Stage { Menu, Abyss, Destination, Enter, Battle, Result, Retry }
+public enum Stage { Menu, Abyss, Destination, Enter, Battle, Result, Retry, OtherDungeon }
 
 public static class RecognitionRules
 {
@@ -63,7 +63,7 @@ public static class StartStagePolicy
         {
             var stage=recognized.Single();
             if(resume||stage==Stage.Abyss)return stage;
-            var name=stage switch { Stage.Battle=>"전투",Stage.Result=>"결과",Stage.Retry=>"보상",Stage.Enter=>"입장 상세",Stage.Destination=>"목적지 선택",_=>"메뉴" };
+            var name=stage switch { Stage.Battle=>"전투",Stage.Result=>"결과",Stage.Retry=>"보상",Stage.OtherDungeon=>"보상",Stage.Enter=>"입장 상세",Stage.Destination=>"목적지 선택",_=>"메뉴" };
             throw new InvalidOperationException($"현재 {name} 화면입니다. '현재 화면 재판별 후 시작'을 켜고 시작하세요.");
         }
         if(!resume&&mainConfirmed)return Stage.Menu;
