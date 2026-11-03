@@ -1,0 +1,62 @@
+[
+  {
+    "image": "a_abyss.png",
+    "screen": "menu.png",
+    "bounds": [
+      955,
+      365,
+      1008,
+      425
+    ]
+  },
+  {
+    "image": "a_husang.png",
+    "screen": "destinations.png",
+    "bounds": [
+      738,
+      122,
+      1235,
+      212
+    ]
+  },
+  {
+    "image": "a_kwanggi.png",
+    "screen": "destinations.png",
+    "bounds": [
+      738,
+      245,
+      1235,
+      335
+    ]
+  },
+  {
+    "image": "a_moolgil.png",
+    "screen": "destinations.png",
+    "bounds": [
+      738,
+      368,
+      1235,
+      458
+    ]
+  },
+  {
+    "image": "a_enter.png",
+    "screen": "enter.png",
+    "bounds": [
+      770,
+      790,
+      1210,
+      836
+    ]
+  },
+  {
+    "image": "touch.png",
+    "screen": "result.png",
+    "bounds": [
+      545,
+      792,
+      755,
+      824
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "Width": 1297,
+  "Height": 873,
+  "ButtonTimeoutSeconds": 25,
+  "RetryTimeoutSeconds": 60,
+  "BattleTimeoutSeconds": 600,
+  "UnknownTimeoutSeconds": 15,
+  "MaximumRetries": 3,
+  "WindowTitle": "마비노기 모바일"
+}

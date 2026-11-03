@@ -1,0 +1,676 @@
+{
+  "opencv": "4.10.0",
+  "imageChecks": 42,
+  "failures": [],
+  "records": [
+    {
+      "target": "abyss",
+      "screen": "battle",
+      "score": 0.23811396956443787,
+      "image": "a_abyss.png",
+      "bounds": [
+        960,
+        370,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "abyss",
+      "screen": "destinations",
+      "score": 0.19897659122943878,
+      "image": "a_abyss.png",
+      "bounds": [
+        961,
+        356,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "abyss",
+      "screen": "enter",
+      "score": -0.09697721898555756,
+      "image": "a_abyss.png",
+      "bounds": [
+        963,
+        356,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "abyss",
+      "screen": "main",
+      "score": 0.15405142307281494,
+      "image": "a_abyss.png",
+      "bounds": [
+        944,
+        357,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "abyss",
+      "screen": "menu",
+      "score": 1.0,
+      "image": "a_abyss.png",
+      "bounds": [
+        955,
+        365,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": true,
+      "expectedImageMatch": true
+    },
+    {
+      "target": "abyss",
+      "screen": "result",
+      "score": 0.10537615418434143,
+      "image": "a_abyss.png",
+      "bounds": [
+        965,
+        365,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "abyss",
+      "screen": "reward",
+      "score": 0.033386748284101486,
+      "image": "a_abyss.png",
+      "bounds": [
+        944,
+        361,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "battle",
+      "score": -0.05685378238558769,
+      "image": "a_husang.png",
+      "bounds": [
+        763,
+        106,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "destinations",
+      "score": 1.0,
+      "image": "a_husang.png",
+      "bounds": [
+        738,
+        122,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": true,
+      "expectedImageMatch": true
+    },
+    {
+      "target": "husang",
+      "screen": "enter",
+      "score": 0.25079357624053955,
+      "image": "a_husang.png",
+      "bounds": [
+        720,
+        108,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "main",
+      "score": 0.018558254465460777,
+      "image": "a_husang.png",
+      "bounds": [
+        763,
+        128,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "menu",
+      "score": 0.01765519380569458,
+      "image": "a_husang.png",
+      "bounds": [
+        751,
+        138,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "result",
+      "score": 0.12365395575761795,
+      "image": "a_husang.png",
+      "bounds": [
+        723,
+        111,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "reward",
+      "score": -0.03678935021162033,
+      "image": "a_husang.png",
+      "bounds": [
+        720,
+        127,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "battle",
+      "score": 0.06602828204631805,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        723,
+        247,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "destinations",
+      "score": 1.0,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        738,
+        245,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": true,
+      "expectedImageMatch": true
+    },
+    {
+      "target": "kwanggi",
+      "screen": "enter",
+      "score": 0.1514258086681366,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        754,
+        229,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "main",
+      "score": -0.10917165875434875,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        763,
+        259,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "menu",
+      "score": 0.04959176480770111,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        723,
+        235,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "result",
+      "score": -0.04774841293692589,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        743,
+        255,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "reward",
+      "score": -0.04458649456501007,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        763,
+        261,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "battle",
+      "score": 0.10147843509912491,
+      "image": "a_moolgil.png",
+      "bounds": [
+        741,
+        352,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "destinations",
+      "score": 1.0,
+      "image": "a_moolgil.png",
+      "bounds": [
+        738,
+        368,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": true,
+      "expectedImageMatch": true
+    },
+    {
+      "target": "moolgil",
+      "screen": "enter",
+      "score": 0.1450572907924652,
+      "image": "a_moolgil.png",
+      "bounds": [
+        763,
+        368,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "main",
+      "score": 0.02662278153002262,
+      "image": "a_moolgil.png",
+      "bounds": [
+        763,
+        381,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "menu",
+      "score": 0.08521699160337448,
+      "image": "a_moolgil.png",
+      "bounds": [
+        720,
+        382,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "result",
+      "score": -0.02947826497256756,
+      "image": "a_moolgil.png",
+      "bounds": [
+        750,
+        376,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "reward",
+      "score": 0.16413119435310364,
+      "image": "a_moolgil.png",
+      "bounds": [
+        763,
+        373,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "battle",
+      "score": -0.050018493086099625,
+      "image": "a_enter.png",
+      "bounds": [
+        761,
+        807,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "destinations",
+      "score": -0.2441834956407547,
+      "image": "a_enter.png",
+      "bounds": [
+        810,
+        780,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "enter",
+      "score": 1.0,
+      "image": "a_enter.png",
+      "bounds": [
+        770,
+        790,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": true,
+      "expectedImageMatch": true
+    },
+    {
+      "target": "enter",
+      "screen": "main",
+      "score": -0.014560599811375141,
+      "image": "a_enter.png",
+      "bounds": [
+        810,
+        789,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "menu",
+      "score": 0.012337074615061283,
+      "image": "a_enter.png",
+      "bounds": [
+        799,
+        775,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "result",
+      "score": 0.17160463333129883,
+      "image": "a_enter.png",
+      "bounds": [
+        763,
+        775,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "reward",
+      "score": 0.34964680671691895,
+      "image": "a_enter.png",
+      "bounds": [
+        734,
+        794,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "battle",
+      "score": 0.015255277045071125,
+      "image": "touch.png",
+      "bounds": [
+        535,
+        795,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "destinations",
+      "score": 0.08835388720035553,
+      "image": "touch.png",
+      "bounds": [
+        545,
+        806,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "enter",
+      "score": 0.07413918524980545,
+      "image": "touch.png",
+      "bounds": [
+        556,
+        778,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "main",
+      "score": 0.09877701848745346,
+      "image": "touch.png",
+      "bounds": [
+        541,
+        782,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "menu",
+      "score": 0.1336248815059662,
+      "image": "touch.png",
+      "bounds": [
+        544,
+        798,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "result",
+      "score": 1.0,
+      "image": "touch.png",
+      "bounds": [
+        545,
+        792,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": true,
+      "expectedImageMatch": true
+    },
+    {
+      "target": "result",
+      "screen": "reward",
+      "score": 0.20715735852718353,
+      "image": "touch.png",
+      "bounds": [
+        532,
+        799,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    }
+  ],
+  "colorMeasurements": [
+    {
+      "screen": "enter",
+      "target": "enter",
+      "bounds": [
+        947,
+        800,
+        91,
+        28
+      ],
+      "bgrMedian": [
+        255.0,
+        135.0,
+        101.0
+      ],
+      "greenDominance": -120.0,
+      "blueDominance": 120.0,
+      "note": "manual text box, not Windows OCR output"
+    },
+    {
+      "screen": "reward",
+      "target": "retry",
+      "bounds": [
+        602,
+        800,
+        94,
+        28
+      ],
+      "bgrMedian": [
+        118.0,
+        179.0,
+        13.0
+      ],
+      "greenDominance": 61.0,
+      "blueDominance": -61.0,
+      "note": "manual text box, not Windows OCR output"
+    }
+  ],
+  "limitation": "One supplied positive per target is also the template source; no independent positive, Windows OCR, live input or temporal validation."
+}

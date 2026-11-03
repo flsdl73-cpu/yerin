@@ -1,0 +1,201 @@
+{
+  "chat": {
+    "Region": {
+      "Left": 80,
+      "Top": 800,
+      "Right": 340,
+      "Bottom": 861
+    },
+    "Text": [
+      "말하기"
+    ],
+    "Images": [],
+    "Threshold": 0.75,
+    "MinimumScore": 2
+  },
+  "menu": {
+    "Region": {
+      "Left": 850,
+      "Top": 160,
+      "Right": 1296,
+      "Bottom": 430
+    },
+    "Text": [
+      "캐릭터",
+      "가방",
+      "크래프팅",
+      "연금술",
+      "퀘스트",
+      "아르바이트",
+      "미션",
+      "거래소",
+      "환경설정",
+      "환경 설정"
+    ],
+    "Images": [],
+    "Threshold": 0.75,
+    "MinimumScore": 2
+  },
+  "abyss": {
+    "Region": {
+      "Left": 944,
+      "Top": 356,
+      "Right": 1018,
+      "Bottom": 430
+    },
+    "Text": [
+      "어비스"
+    ],
+    "Images": [
+      "a_abyss.png"
+    ],
+    "Threshold": 0.75,
+    "MinimumScore": 2
+  },
+  "husang": {
+    "Region": {
+      "Left": 720,
+      "Top": 106,
+      "Right": 1260,
+      "Bottom": 228
+    },
+    "Text": [],
+    "Images": [
+      "a_husang.png"
+    ],
+    "Threshold": 0.75,
+    "MinimumScore": 2,
+    "RequireImage": true
+  },
+  "kwanggi": {
+    "Region": {
+      "Left": 720,
+      "Top": 229,
+      "Right": 1260,
+      "Bottom": 351
+    },
+    "Text": [],
+    "Images": [
+      "a_kwanggi.png"
+    ],
+    "Threshold": 0.75,
+    "MinimumScore": 2,
+    "RequireImage": true
+  },
+  "moolgil": {
+    "Region": {
+      "Left": 720,
+      "Top": 352,
+      "Right": 1260,
+      "Bottom": 476
+    },
+    "Text": [],
+    "Images": [
+      "a_moolgil.png"
+    ],
+    "Threshold": 0.75,
+    "MinimumScore": 2,
+    "RequireImage": true
+  },
+  "enter": {
+    "Region": {
+      "Left": 734,
+      "Top": 775,
+      "Right": 1250,
+      "Bottom": 853
+    },
+    "Text": [
+      "입장하기"
+    ],
+    "Images": [
+      "a_enter.png"
+    ],
+    "Threshold": 0.75,
+    "MinimumScore": 3,
+    "Color": "greenOrBlue"
+  },
+  "result": {
+    "Region": {
+      "Left": 530,
+      "Top": 777,
+      "Right": 770,
+      "Bottom": 838
+    },
+    "Text": [
+      "터치해"
+    ],
+    "Images": [
+      "touch.png",
+      "touch2.png"
+    ],
+    "Threshold": 0.75,
+    "MinimumScore": 2
+  },
+  "retry": {
+    "Region": {
+      "Left": 565,
+      "Top": 777,
+      "Right": 733,
+      "Bottom": 851
+    },
+    "Text": [
+      "다시 하기"
+    ],
+    "Images": [],
+    "Threshold": 0.75,
+    "MinimumScore": 3,
+    "RequireText": true,
+    "RequireColor": true,
+    "Color": "green"
+  },
+  "battle": {
+    "Region": {
+      "Left": 1040,
+      "Top": 224,
+      "Right": 1292,
+      "Bottom": 284
+    },
+    "Text": [
+      "허상의 정박지 클리어"
+    ],
+    "Images": [],
+    "Threshold": 0.75,
+    "MinimumScore": 2,
+    "RequireText": true
+  },
+  "skip": {
+    "Region": {
+      "Left": 1000,
+      "Top": 31,
+      "Right": 1296,
+      "Bottom": 160
+    },
+    "Text": [
+      "장면 넘기기",
+      "대화 넘기기"
+    ],
+    "Images": [],
+    "Threshold": 0.75,
+    "MinimumScore": 2,
+    "RequireText": true
+  },
+  "purchase": {
+    "Region": {
+      "Left": 200,
+      "Top": 170,
+      "Right": 1100,
+      "Bottom": 760
+    },
+    "Text": [
+      "구매",
+      "재료 부족",
+      "재료가 부족",
+      "결제",
+      "충전"
+    ],
+    "Images": [],
+    "Threshold": 0.75,
+    "MinimumScore": 2,
+    "RequireText": true
+  }
+}
