@@ -94,3 +94,20 @@ public class StartStageTests
     [Fact] public void ConflictingScreensNeverStart()=>Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(true,[Stage.Battle,Stage.Retry],true));
     [Fact] public void UnrecognizedInitialScreenStops()=>Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(false,[],false));
 }
+
+public class DitherDetectionTests
+{
+    [Theory]
+    [InlineData("battle",false)]
+    [InlineData("battle-live-01",false)]
+    [InlineData("battle-live-02",false)]
+    [InlineData("battle-dither",true)]
+    public void DetectActualGridWithoutFilteringNormalBattleFrames(string name,bool expected)
+    {
+        var pixels=File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory,"fixtures",name+".gray"));
+        Assert.Equal(expected,DitherRules.IsDithered(pixels,252,60));
+    }
+    [Fact] public void DetectingGridDoesNotSupplyBattleEvidence()
+        =>Assert.False(RecognitionRules.HasTextEvidence(["XXXXXX"],["허상의 정박지"],["부활 6회"]));
+    [Fact] public void RejectMalformedImage()=>Assert.Throws<ArgumentException>(()=>DitherRules.Ratio(new byte[4],3,3));
+}

@@ -1,0 +1,26 @@
+{
+  "samples": [
+    {
+      "screen": "battle",
+      "ratio": 0.0104666081436964,
+      "expectedDither": false
+    },
+    {
+      "screen": "battle-live-01",
+      "ratio": 0.008035653994192721,
+      "expectedDither": false
+    },
+    {
+      "screen": "battle-live-02",
+      "ratio": 0.01404551286379904,
+      "expectedDither": false
+    },
+    {
+      "screen": "battle-dither",
+      "ratio": 0.46991694239989196,
+      "expectedDither": true
+    }
+  ],
+  "threshold": 0.15,
+  "limitation": "Image quality and preprocessing only; Windows OCR must be rerun."
+}

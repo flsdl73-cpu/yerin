@@ -171,7 +171,8 @@
     "RequireText": true,
     "RequiredText": [
       "부활 6회"
-    ]
+    ],
+    "OcrFilter": "dither-gold"
   },
   "skip": {
     "Region": {
@@ -206,6 +207,7 @@
     "Images": [],
     "Threshold": 0.75,
     "MinimumScore": 2,
-    "RequireText": true
+    "RequireText": true,
+    "OcrFilter": "dither-smooth"
   }
 }

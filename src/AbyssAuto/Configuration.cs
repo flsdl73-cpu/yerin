@@ -10,6 +10,7 @@ public sealed class Target
     public Region Region { get; set; } = new(0, 0, 1, 1);
     public Region? OcrRegion { get; set; }
     public bool WhiteTextFallback { get; set; }
+    public string OcrFilter { get; set; } = "none";
     public string[] Text { get; set; } = [];
     public string[] RequiredText { get; set; } = [];
     public string[] Images { get; set; } = [];
@@ -50,6 +51,7 @@ public sealed class Configuration
                 throw new InvalidDataException($"{name}: 인식 영역 오류");
             if(t.OcrRegion is { } ocr && (ocr.Right<=ocr.Left || ocr.Bottom<=ocr.Top || !r.Rectangle.Contains(ocr.Rectangle)))
                 throw new InvalidDataException($"{name}: OCR 영역은 탐색 영역 내부여야 합니다.");
+            if(t.OcrFilter is not ("none" or "dither-gold" or "dither-smooth"))throw new InvalidDataException($"{name}: OCR 전처리 설정 오류");
             if (t.Threshold is < 0 or > 1) throw new InvalidDataException($"{name}: 사진 기준 오류");
         }
     }

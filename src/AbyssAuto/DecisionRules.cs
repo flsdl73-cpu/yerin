@@ -70,3 +70,20 @@ public static class StartStagePolicy
         throw new InvalidOperationException("현재 단계가 불명확합니다. 입력 없이 정지합니다.");
     }
 }
+
+public static class DitherRules
+{
+    // A normal glyph edge affects few 2x2 cells. A repeating black/light grid affects most.
+    public static double Ratio(ReadOnlySpan<byte> gray,int width,int height)
+    {
+        if(width<2||height<2||gray.Length!=width*height)throw new ArgumentException("회색조 이미지 크기 오류");
+        long noisy=0;
+        for(var y=0;y<height-1;y++)for(var x=0;x<width-1;x++)
+        {
+            var i=y*width+x;
+            if(Math.Abs(gray[i]+gray[i+width+1]-gray[i+1]-gray[i+width])>100)noisy++;
+        }
+        return noisy/(double)((width-1)*(height-1));
+    }
+    public static bool IsDithered(ReadOnlySpan<byte> gray,int width,int height)=>Ratio(gray,width,height)>.15;
+}

@@ -1,8 +1,23 @@
 {
   "opencv": "4.10.0",
-  "imageChecks": 54,
+  "imageChecks": 60,
   "failures": [],
   "records": [
+    {
+      "target": "abyss",
+      "screen": "battle-dither",
+      "score": 0.029686590656638145,
+      "image": "a_abyss.png",
+      "bounds": [
+        947,
+        361,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
     {
       "target": "abyss",
       "screen": "battle-live-01",
@@ -140,6 +155,21 @@
     },
     {
       "target": "husang",
+      "screen": "battle-dither",
+      "score": 0.1285305917263031,
+      "image": "a_husang.png",
+      "bounds": [
+        762,
+        106,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
       "screen": "battle-live-01",
       "score": 0.06939573585987091,
       "image": "a_husang.png",
@@ -266,6 +296,21 @@
       "bounds": [
         720,
         127,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "battle-dither",
+      "score": 0.05339532718062401,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        748,
+        246,
         497,
         90
       ],
@@ -410,6 +455,21 @@
     },
     {
       "target": "moolgil",
+      "screen": "battle-dither",
+      "score": 0.0009517549769952893,
+      "image": "a_moolgil.png",
+      "bounds": [
+        762,
+        366,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
       "screen": "battle-live-01",
       "score": -0.11950478702783585,
       "image": "a_moolgil.png",
@@ -545,6 +605,21 @@
     },
     {
       "target": "enter",
+      "screen": "battle-dither",
+      "score": 0.008154326118528843,
+      "image": "a_enter.png",
+      "bounds": [
+        741,
+        807,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
       "screen": "battle-live-01",
       "score": 0.21990983188152313,
       "image": "a_enter.png",
@@ -673,6 +748,21 @@
         794,
         440,
         46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "battle-dither",
+      "score": 0.022479629144072533,
+      "image": "touch.png",
+      "bounds": [
+        547,
+        805,
+        210,
+        32
       ],
       "threshold": 0.75,
       "imagePassed": false,
