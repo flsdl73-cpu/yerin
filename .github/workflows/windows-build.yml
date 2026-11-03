@@ -40,3 +40,18 @@ jobs:
           path: artifacts/update/
           if-no-files-found: error
           retention-days: 14
+
+      - name: Upload driver-free Windows package
+        uses: actions/upload-artifact@v4
+        with:
+          name: abyss-auto-no-driver
+          path: artifacts/no-driver/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload driver-free update
+        uses: actions/upload-artifact@v4
+        with:
+          name: abyss-auto-no-driver-update
+          path: artifacts/no-driver-update/
+          if-no-files-found: error
+          retention-days: 14

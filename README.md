@@ -26,6 +26,16 @@ Windows 10/11 x64용 C# .NET 8 WinForms 프로그램입니다. 화면 캡처 + O
 
 GitHub Actions의 **abyss-auto-update**은 `AbyssAuto.dll`, `targets.json`, 추가 검사 이미지 한 장만 제공하는 작은 업데이트입니다. 프로그램을 종료하고 압축을 푼 파일/폴더를 기존 `AbyssAuto.exe`가 있는 v0.3.0 폴더에 복사해 덮어쓰세요. 런타임·Interception DLL·드라이버는 그대로 사용합니다. 기존 EXE를 실행해 창 제목 0.4.1을 확인합니다. 상세 내용은 `UPDATE-0.4.1.txt`를 참고하세요. 기존 v0.3.0 설치가 없으면 전체 패키지를 사용하세요.
 
+## 드라이버 없는 시험 버전 v0.5.0
+
+기존 Interception 버전(v0.4.2)과 별도로 `abyss-auto-no-driver` 및 작은 업데이트 `abyss-auto-no-driver-update`를 제공합니다. v0.5.0은 `user32.SendInput`만 사용하며 Interception P/Invoke와 구현은 빌드에서 제외합니다. DLL 이름/컨텍스트 진입점이 managed binary에 남지 않는지, 출력에 SYS 파일이 없는지 CI에서 검사합니다. 자동 설치·자동 재시작·드라이버로의 자동 fallback은 없습니다.
+
+작은 업데이트는 기존 폴더의 `AbyssAuto.dll`만 교체합니다. UI 제목 0.5.0과 ‘Windows 기본 입력’ 표시를 확인하세요. 실행 유형·목표·이미지·설정은 유지합니다. 키와 클릭 전달 결과 및 화면 전환은 계속 확인하며 취소·예외 때 key-up/mouse-up을 보냅니다.
+
+이미 설치한 드라이버는 이 버전 실행만으로 제거되지 않습니다. 다른 게임을 위해 Interception을 제거해야 한다면 공식 `/uninstall` 성공 확인 후 재부팅이 필요합니다. 그 뒤 이 버전의 실제 게임 입력을 시험해야 합니다. 기본 입력이 게임에서 작동한다고 아직 검증하지 않았습니다.
+
+두 버전 모두 X를 누르면 실행 중에는 취소·입력 해제를 기다리고 자동으로 창을 닫습니다. 현재 UI 실행 외 별도 서비스나 자동 실행 등록은 하지 않습니다. 상세 안내는 `NO-DRIVER.txt`입니다.
+
 ## v0.4.1 실행 유형
 
 화면의 ‘혼자하기’와 ‘2인이상’은 보상 이후 반복 경로를 선택합니다. 둘 중 하나만 체크되고 기본값은 지금까지 확인한 혼자하기입니다. 선택은 실행 폴더의 `run-options.json`에 저장되며 실행 중에는 변경할 수 없습니다.
@@ -49,7 +59,7 @@ GitHub Actions의 **abyss-auto-update**은 `AbyssAuto.dll`, `targets.json`, 추�
 
 저장소에 소스와 `.github/workflows/windows-build.yml`을 올린 뒤, GitHub의 **Actions → Windows package**에서 실행합니다. `main`에 push하면 자동 실행되며, 수동 실행도 가능합니다. 성공한 실행 화면 하단 **Artifacts → abyss-auto-win-x64**에서 ZIP을 다운로드할 수 있습니다. GitHub 로그인이 필요하며 아티팩트 보관 기간은 14일입니다.
 
-이 작업은 Windows x64 빌드와 48개 결정 규칙 테스트를 실행합니다. 설치된 한국어 OCR로 45초 이내 저장 화면 검사를 시도합니다. 지난 러너의 5분 시간 초과로 인해 CI에서는 언어 팩 설치를 더 이상 시도하지 않습니다. 결과는 실행 요약과 `validation/windows-ci`에 기록하며, OCR 미설치·실행 불가를 통과로 취급하지 않습니다. 게임 입력·실제 반복 검증은 수행하지 않습니다. Interception DLL과 드라이버는 포함하지 않습니다.
+이 작업은 Windows x64 빌드와 53개 결정 규칙 테스트를 실행합니다. 설치된 한국어 OCR로 45초 이내 저장 화면 검사를 시도합니다. 지난 러너의 5분 시간 초과로 인해 CI에서는 언어 팩 설치를 더 이상 시도하지 않습니다. 결과는 실행 요약과 `validation/windows-ci`에 기록하며, OCR 미설치·실행 불가를 통과로 취급하지 않습니다. 게임 입력·실제 반복 검증은 수행하지 않습니다. Interception DLL과 드라이버는 포함하지 않습니다.
 
 ## 빌드
 

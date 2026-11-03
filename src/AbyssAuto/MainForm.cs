@@ -19,6 +19,7 @@ public sealed class MainForm : Form
     private readonly Stopwatch elapsed=new();
     private CancellationTokenSource? cancellation;
     private int count;
+    private bool closeRequested;
     private readonly List<Control> locked=[];
     public MainForm()
     {
@@ -28,7 +29,7 @@ public sealed class MainForm : Form
         var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(20),RowCount=6,ColumnCount=1};
         root.RowStyles.Add(new(SizeType.Absolute,60));root.RowStyles.Add(new(SizeType.Absolute,40));root.RowStyles.Add(new(SizeType.Absolute,90));root.RowStyles.Add(new(SizeType.Absolute,80));root.RowStyles.Add(new(SizeType.Absolute,60));root.RowStyles.Add(new(SizeType.Percent,100));
         var top=new FlowLayoutPanel {Dock=DockStyle.Fill};top.Controls.AddRange([new Label {Text="목적지",AutoSize=true},destination,start,stop]);
-        var modes=new FlowLayoutPanel {Dock=DockStyle.Fill};modes.Controls.AddRange([new Label {Text="실행 유형",AutoSize=true},solo,twoOrMore]);
+        var modes=new FlowLayoutPanel {Dock=DockStyle.Fill};modes.Controls.AddRange([new Label {Text="실행 유형",AutoSize=true},solo,twoOrMore,new Label {Text=InputFactory.Description,AutoSize=true,ForeColor=Color.DimGray}]);
         var modeHelp=new ToolTip();modeHelp.SetToolTip(solo,"목표 횟수가 남으면 다시 하기로 다음 전투를 시작합니다.");modeHelp.SetToolTip(twoOrMore,"목표 횟수가 남으면 다른 던전 가기 → 목적지 선택 → 입장으로 진행합니다.");FormClosed+=(_,_)=>modeHelp.Dispose();
         var settings=new FlowLayoutPanel {Dock=DockStyle.Fill};settings.Controls.AddRange([new Label {Text="목표 횟수 (0=무제한)",AutoSize=true},limit,skip,resume,new Label {Text="부활·음식·재접속: 자료 미등록 / 비활성",AutoSize=true,ForeColor=Color.DimGray}]);
         var tools=new FlowLayoutPanel {Dock=DockStyle.Fill};
@@ -44,7 +45,7 @@ public sealed class MainForm : Form
         detail.CheckedChanged+=(_,_)=>logs.Visible=detail.Checked;
         folder.Click+=(_,_)=>Process.Start(new ProcessStartInfo("explorer.exe",AppContext.BaseDirectory){UseShellExecute=true});
         clock.Tick+=(_,_)=>metrics.Text=$"완료 {count}판  |  경과 {elapsed.Elapsed:hh\\:mm\\:ss}  |  평균 {(count==0?"—":TimeSpan.FromTicks(elapsed.Elapsed.Ticks/count).ToString(@"mm\:ss"))}";
-        clock.Start();FormClosing+=(_,e)=>{ if(cancellation!=null) {Stop();e.Cancel=true;status.Text="입력 해제 후 다시 닫아주세요.";} };
+        clock.Start();FormClosed+=(_,_)=>clock.Dispose();FormClosing+=(_,e)=>{ if(cancellation!=null) {closeRequested=true;Stop();e.Cancel=true;status.Text="입력을 해제하고 프로그램을 종료하는 중입니다.";} };
     }
     protected override void OnHandleCreated(EventArgs e)
     {
@@ -75,7 +76,7 @@ public sealed class MainForm : Form
     }
     private async Task Start()
     {
-        if(cancellation!=null)return;
+        if(cancellation!=null||closeRequested)return;
         try
         {
             var playMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked);
@@ -94,7 +95,7 @@ public sealed class MainForm : Form
             status.Text="정지됨 · 상세 로그를 확인하세요.";
         }
         catch(Exception error) {Log(error.ToString());status.Text=error.Message;}
-        finally {elapsed.Stop();cancellation?.Dispose();cancellation=null;foreach(var control in locked)control.Enabled=true;start.Enabled=true;}
+        finally {elapsed.Stop();cancellation?.Dispose();cancellation=null;foreach(var control in locked)control.Enabled=!closeRequested;start.Enabled=!closeRequested;if(closeRequested&&!IsDisposed)BeginInvoke(()=>Close());}
     }
     private static string StageName(Stage stage)=>stage switch {
         Stage.Menu=>"메뉴 열림 확인",Stage.Abyss=>"어비스 선택",Stage.Destination=>"목적지 선택",Stage.Enter=>"입장 확인",Stage.Battle=>"전투가 끝나기를 기다리고 있어요",Stage.Result=>"결과 확인",Stage.Retry=>"다시 하기",Stage.OtherDungeon=>"다른 던전 가기",_=>stage.ToString()};

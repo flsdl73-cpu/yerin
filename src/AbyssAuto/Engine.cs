@@ -29,7 +29,8 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
         {
             if(!config.Targets[destination].Images.Any(f=>File.Exists(Path.Combine(config.Root,"images",f))))
                 throw new InvalidOperationException("선택한 목적지의 실제 배너 사진을 먼저 등록하세요.");
-            using var driver=new InterceptionInput(window);input=driver;
+            using var device=InputFactory.Create(window);input=device;
+            journal.Write($"입력 방식: {InputFactory.Description}");
             journal.Write("3초 후 시작합니다. 게임 창을 활성화하세요. F10: 즉시 정지");
             for(int i=3;i>0;i--) {System.Media.SystemSounds.Asterisk.Play();await Task.Delay(1000,token);}
             Set(await Classify(resume,token));

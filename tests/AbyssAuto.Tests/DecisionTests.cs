@@ -130,3 +130,23 @@ public class RepeatRouteTests
         Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(false,[Stage.OtherDungeon],false));
     }
 }
+
+public class WindowsInputPacketTests
+{
+    [Fact]public void Win64InputLayoutMatchesWindowsApi()
+    {
+        Assert.Equal(40,System.Runtime.InteropServices.Marshal.SizeOf<WindowsInputPacket>());
+        Assert.Equal(8,System.Runtime.InteropServices.Marshal.OffsetOf<WindowsInputPacket>(nameof(WindowsInputPacket.Keyboard)).ToInt32());
+    }
+    [Theory][InlineData(0x01)][InlineData(0x39)]
+    public void ScanCodeDownAndUpHaveCorrectFlagsAndMarker(int scan)
+    {
+        var down=WindowsInputPackets.Key((ushort)scan,false);var up=WindowsInputPackets.Key((ushort)scan,true);
+        Assert.Equal(1u,down.Type);Assert.Equal((ushort)scan,down.Keyboard.ScanCode);Assert.Equal((ushort)0,down.Keyboard.VirtualKey);
+        Assert.Equal(8u,down.Keyboard.Flags);Assert.Equal(10u,up.Keyboard.Flags);Assert.Equal(WindowsInputPackets.Marker,up.Keyboard.ExtraInfo);
+    }
+    [Fact]public void MouseReleaseDoesNotMoveCursor()
+    {Assert.Equal(2u,WindowsInputPackets.MouseButton(false).Mouse.Flags);Assert.Equal(4u,WindowsInputPackets.MouseButton(true).Mouse.Flags);}
+    [Fact]public void MouseMoveUsesAbsolutePrimaryMonitorCoordinates()
+    {var p=WindowsInputPackets.Move(10000,20000);Assert.Equal(0x8001u,p.Mouse.Flags);Assert.Equal(10000,p.Mouse.X);Assert.Equal(20000,p.Mouse.Y);Assert.Equal(WindowsInputPackets.Marker,p.Mouse.ExtraInfo);}
+}

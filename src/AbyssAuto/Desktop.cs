@@ -14,6 +14,7 @@ internal static class Native
     [DllImport("user32.dll")] internal static extern bool EnumWindows(EnumWindow callback, nint param);
     [DllImport("user32.dll", CharSet=CharSet.Unicode)] internal static extern int GetWindowText(nint hwnd, System.Text.StringBuilder text, int max);
     [DllImport("user32.dll")] internal static extern bool IsWindowVisible(nint hwnd);
+    #if !DRIVER_FREE
     [DllImport("interception.dll", CallingConvention=CallingConvention.Cdecl)] internal static extern nint interception_create_context();
     [DllImport("interception.dll", CallingConvention=CallingConvention.Cdecl)] internal static extern void interception_destroy_context(nint context);
     [DllImport("interception.dll", CallingConvention=CallingConvention.Cdecl)] internal static extern int interception_send(nint context, int device, ref KeyStroke stroke, uint count);
@@ -21,6 +22,7 @@ internal static class Native
     [DllImport("interception.dll", CallingConvention=CallingConvention.Cdecl)] internal static extern uint interception_get_hardware_id(nint context, int device, nint buffer, uint size);
     [StructLayout(LayoutKind.Sequential)] internal struct KeyStroke { public ushort Code, State; public uint Information; }
     [StructLayout(LayoutKind.Sequential)] internal struct MouseStroke { public ushort State, Flags; public short Rolling; public int X, Y; public uint Information; }
+    #endif
 }
 public sealed class GameWindow(Scenario settings)
 {
@@ -63,6 +65,7 @@ public interface IInput : IDisposable
     Task Key(ushort code, CancellationToken token);
     Task Click(Rectangle detected, CancellationToken token);
 }
+#if !DRIVER_FREE
 public sealed class InterceptionInput : IInput
 {
     private readonly nint context;
@@ -115,3 +118,5 @@ public sealed class InterceptionInput : IInput
     }
     public void Dispose() { if (context != 0) Native.interception_destroy_context(context); }
 }
+
+#endif

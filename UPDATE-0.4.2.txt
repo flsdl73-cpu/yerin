@@ -1,0 +1,8 @@
+v0.4.2는 기존 Interception 입력을 유지하는 버전입니다.
+기존 기능은 유지하며, X를 누르면 정지·입력 해제 후 창을 자동으로 닫습니다.
+이 버전은 설치된 Interception 드라이버를 Windows에서 제거하지 않습니다.
+
+드라이버를 사용하지 않으려면 별도 v0.5.0 패키지를 받으세요.
+Artifacts: abyss-auto-no-driver-update (기존 폴더에 DLL 덮어쓰기)
+또는 abyss-auto-no-driver (전체 패키지).
+v0.5.0의 게임 입력 호환성은 새로 확인해야 합니다.
