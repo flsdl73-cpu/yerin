@@ -233,5 +233,52 @@
     "Color": "green",
     "WhiteTextFallback": true,
     "Threshold": 0.75
+  },
+  "incapacitated": {
+    "Region": {
+      "Left": 530,
+      "Top": 175,
+      "Right": 770,
+      "Bottom": 245
+    },
+    "Text": [
+      "행동불능"
+    ],
+    "Images": [],
+    "MinimumScore": 2,
+    "RequireText": true,
+    "MinimumTextHeight": 26
+  },
+  "revive": {
+    "Region": {
+      "Left": 885,
+      "Top": 730,
+      "Right": 1286,
+      "Bottom": 800
+    },
+    "Text": [
+      "여기서 부활"
+    ],
+    "Images": [],
+    "MinimumScore": 3,
+    "RequireText": true,
+    "RequireColor": true,
+    "Color": "orange",
+    "ExactText": true,
+    "WhiteTextFallback": true
+  },
+  "revive_count": {
+    "Region": {
+      "Left": 565,
+      "Top": 271,
+      "Right": 735,
+      "Bottom": 317
+    },
+    "Text": [
+      "남은 부활 횟수"
+    ],
+    "Images": [],
+    "MinimumScore": 2,
+    "RequireText": true
   }
 }

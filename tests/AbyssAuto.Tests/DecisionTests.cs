@@ -150,3 +150,64 @@ public class WindowsInputPacketTests
     [Fact]public void MouseMoveUsesAbsolutePrimaryMonitorCoordinates()
     {var p=WindowsInputPackets.Move(10000,20000);Assert.Equal(0x8001u,p.Mouse.Flags);Assert.Equal(10000,p.Mouse.X);Assert.Equal(20000,p.Mouse.Y);Assert.Equal(WindowsInputPackets.Marker,p.Mouse.ExtraInfo);}
 }
+
+public class RevivalPolicyTests
+{
+    [Fact]public void DefaultDoesNotEnableUnverifiedRevival()=>Assert.False(new RunOptions().AutoRevive);
+    [Theory][InlineData(true,false)][InlineData(false,true)][InlineData(false,false)]
+    public void NeverClickWithoutBothDeathAndButton(bool dead,bool button)
+        =>Assert.Equal(RevivalAction.Wait,new RevivalRules().Observe(dead,button,false,false,null,true,1,0).Action);
+    [Fact]public void FourSecondIntervalAndSameFrameNeverDoubleClick()
+    {
+        var p=new RevivalRules();Assert.Equal(RevivalAction.Click,p.Observe(true,true,false,false,6,true,1,0).Action);
+        Assert.Equal(0,p.Attempts);p.Sent(1,0);Assert.Equal(1,p.Attempts);
+        Assert.Equal(RevivalAction.Wait,p.Observe(true,true,false,false,6,true,1,10).Action);
+        Assert.Equal(RevivalAction.Wait,p.Observe(true,true,false,false,6,true,2,3.999).Action);
+        Assert.Equal(RevivalAction.Click,p.Observe(true,true,false,false,6,true,3,4).Action);
+    }
+    [Fact]public void MissingDeathTextAloneDoesNotConfirmRecovery()
+    {
+        var p=new RevivalRules();Assert.Equal(RevivalAction.Wait,p.Observe(false,true,true,false,null,true,1,0).Action);
+        Assert.Equal(RevivalAction.Wait,p.Observe(false,false,true,false,null,true,2,1).Action);
+        Assert.Equal(RevivalAction.Wait,p.Observe(false,false,true,false,null,true,2,1).Action);
+        Assert.Equal(RevivalAction.Recovered,p.Observe(false,false,true,false,null,true,3,2).Action);
+    }
+    [Fact]public void LoadingOrUnknownScreenDoesNotMeanRevived()
+    {var p=new RevivalRules();for(int i=1;i<5;i++)Assert.Equal(RevivalAction.Wait,p.Observe(false,false,false,false,null,true,i,i).Action);}
+    [Fact]public void StaleFramesCannotSupplyClick()
+    {var p=new RevivalRules();Assert.Equal(RevivalAction.Wait,p.Observe(true,true,false,false,6,false,1,0).Action);Assert.Throws<InvalidOperationException>(()=>p.Sent(1,0));}
+    [Fact]public void PurchaseOrZeroQuotaAlwaysStops()
+    {
+        Assert.Equal(RevivalAction.Stop,new RevivalRules().Observe(true,true,false,true,null,true,1,0).Action);
+        Assert.Equal(RevivalAction.Stop,new RevivalRules().Observe(true,true,false,false,0,true,1,0).Action);
+    }
+    [Fact]public void InputRetriesAreBoundedAndWaitBeforeFinalFailure()
+    {
+        var p=new RevivalRules(1);Assert.Equal(RevivalAction.Click,p.Observe(true,true,false,false,6,true,1,0).Action);p.Sent(1,0);
+        Assert.Equal(RevivalAction.Wait,p.Observe(true,true,false,false,6,true,2,1).Action);
+        Assert.Equal(RevivalAction.Stop,p.Observe(true,true,false,false,6,true,3,4).Action);
+    }
+    [Theory][InlineData("남은 부활 횟수 3/3",3)][InlineData("남은 부활 횟수 6/6",6)][InlineData("남은 부활 횟수 0/6",0)]
+    public void ReadActualQuotaLabels(string text,int expected)=>Assert.Equal(expected,RevivalRules.Remaining(text));
+    [Theory][InlineData("1 여기서 부활")][InlineData("남은 부활 횟수 O/6")][InlineData("남은 부활 횟수 7/6")]
+    public void CostAndUnreadableTextAreNotQuota(string text)=>Assert.Null(RevivalRules.Remaining(text));
+    [Theory][InlineData(255,153,48,true)][InlineData(237,176,52,true)][InlineData(14,176,115,false)][InlineData(255,0,0,false)][InlineData(255,255,255,false)]
+    public void SeparateOrangeReviveFromGreenOtherActions(int r,int g,int b,bool expected)=>Assert.Equal(expected,RevivalColor.IsOrange(r,g,b));
+}
+
+public class ExactReviveTextTests
+{
+    [Fact]public void LocateOnlyHereReviveWordsWhenOcrMergesButtons()
+    {
+        TextHit[] words=[new("여신상에서",new(900,750,100,24)),new("부활",new(1005,750,40,24)),new("1",new(1110,750,10,24)),new("여기서",new(1145,750,55,24)),new("부활",new(1206,750,40,24))];
+        var match=Assert.Single(OcrTextGroups.ExactPhrases(words,["여기서 부활"]));
+        Assert.Equal(1145,match.Bounds.Left);Assert.Equal(1246,match.Bounds.Right);
+    }
+    [Fact]public void GrowthGuideAndGoddessDoNotMatch()
+    {
+        TextHit[] words=[new("여신상에서",new(900,750,100,24)),new("부활",new(1005,750,40,24)),new("성장",new(1120,750,45,24)),new("가이드",new(1170,750,60,24))];
+        Assert.Empty(OcrTextGroups.ExactPhrases(words,["여기서 부활"]));
+    }
+    [Fact]public void DoNotJoinFarApartLabelsIntoClickTarget()
+    {Assert.Empty(OcrTextGroups.ExactPhrases([new("여기서",new(900,750,50,24)),new("부활",new(1200,750,40,24))],["여기서 부활"]));}
+}

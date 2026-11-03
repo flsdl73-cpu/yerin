@@ -1,0 +1,35 @@
+{
+  "rows": [
+    {
+      "screen": 1,
+      "manualTextBounds": [
+        995,
+        759,
+        1089,
+        783
+      ],
+      "medianRGB": [
+        239.0,
+        174.0,
+        66.0
+      ],
+      "orangePassed": true
+    },
+    {
+      "screen": 2,
+      "manualTextBounds": [
+        1165,
+        754,
+        1260,
+        780
+      ],
+      "medianRGB": [
+        253,
+        125,
+        51
+      ],
+      "orangePassed": true
+    }
+  ],
+  "limitation": "Manual text bounds from supplied screenshots; checks button background color only. Does not execute Windows OCR or live input."
+}

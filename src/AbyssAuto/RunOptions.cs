@@ -6,6 +6,7 @@ public enum PlayMode { Solo,TwoOrMore }
 public sealed class RunOptions
 {
     public PlayMode PlayMode { get; set; }=PlayMode.Solo;
+    public bool AutoRevive {get;set;}
     private static readonly JsonSerializerOptions Json=new() { WriteIndented=true,Converters={new JsonStringEnumConverter(allowIntegerValues:false)} };
     public static string FilePath=>Path.Combine(AppContext.BaseDirectory,"run-options.json");
     public static RunOptions Load()

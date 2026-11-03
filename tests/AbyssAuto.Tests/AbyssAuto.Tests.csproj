@@ -7,6 +7,8 @@
     <Compile Include="../../src/AbyssAuto/DecisionRules.cs" Link="DecisionRules.cs" />
     <Compile Include="../../src/AbyssAuto/RunOptions.cs" Link="RunOptions.cs" />
     <Compile Include="../../src/AbyssAuto/WindowsInputPackets.cs" Link="WindowsInputPackets.cs" />
+    <Compile Include="../../src/AbyssAuto/RevivalRules.cs" Link="RevivalRules.cs" />
+    <Compile Include="../../src/AbyssAuto/OcrTextGroups.cs" Link="OcrTextGroups.cs" />
     <None Include="../../validation/live-battle-ocr.json" Link="live-battle-ocr.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../validation/fixtures/*.gray" Link="fixtures/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

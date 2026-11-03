@@ -5,7 +5,6 @@ using Windows.Media.Ocr;
 using CvRect = OpenCvSharp.Rect;
 namespace AbyssAuto;
 
-public sealed record TextHit(string Text, Rectangle Bounds, string Source="raw");
 public sealed record Detection(string Name, bool Passed, Rectangle Bounds, int Score, string Ocr,
     string? Image, double ImageScore, bool Color, string Reason, IReadOnlyList<TextHit>? OcrAttempts=null, long RecognitionMilliseconds=0);
 public sealed class Vision(Configuration config)
@@ -14,7 +13,7 @@ public sealed class Vision(Configuration config)
         ?? throw new InvalidOperationException("Windows 한국어 OCR 언어 팩을 설치해주세요.");
     public static string Normalize(string value) => TextRules.Normalize(value);
     public static bool Matches(string actual,string expected,bool fuzzy=false) => TextRules.Matches(actual,expected,fuzzy);
-    private async Task<List<TextHit>> Read(Bitmap frame, Rectangle area, int scale, CancellationToken token, bool whiteText=false, string filter="none")
+    private async Task<List<TextHit>> Read(Bitmap frame, Rectangle area, int scale, CancellationToken token, bool whiteText=false, string filter="none", string[]? exactPhrases=null)
     {
         using var crop=frame.Clone(area, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
         using var prepared=OcrPreprocessor.Prepare(crop,filter,out var preprocessing);
@@ -41,10 +40,15 @@ public sealed class Vision(Configuration config)
             return new TextHit(line.Text,Rectangle.FromLTRB((int)Math.Floor(left),(int)Math.Floor(top),(int)Math.Ceiling(right),(int)Math.Ceiling(bottom)),$"{(whiteText?"white-mask+"+preprocessing:preprocessing)}-{scale}x");
         }).ToList();
         // OCR can group a complete menu row into one line; retain exact individual labels too.
-        hits.AddRange(result.Lines.SelectMany(l=>l.Words).Select(word=> {
-            var b=word.BoundingRect;
-            return new TextHit(word.Text,Rectangle.FromLTRB((int)Math.Floor(b.Left/scale)+area.Left,(int)Math.Floor(b.Top/scale)+area.Top,(int)Math.Ceiling(b.Right/scale)+area.Left,(int)Math.Ceiling(b.Bottom/scale)+area.Top),$"{(whiteText?"white-mask+"+preprocessing:preprocessing)}-{scale}x");
-        }));
+        foreach(var line in result.Lines)
+        {
+            var words=line.Words.Select(word=> {
+                var b=word.BoundingRect;
+                return new TextHit(word.Text,Rectangle.FromLTRB((int)Math.Floor(b.Left/scale)+area.Left,(int)Math.Floor(b.Top/scale)+area.Top,(int)Math.Ceiling(b.Right/scale)+area.Left,(int)Math.Ceiling(b.Bottom/scale)+area.Top),$"{(whiteText?"white-mask+"+preprocessing:preprocessing)}-{scale}x");
+            }).ToArray();
+            hits.AddRange(words);
+            if(exactPhrases is {Length:>0})hits.AddRange(OcrTextGroups.ExactPhrases(words,exactPhrases));
+        }
         return hits;
     }
     public async Task<Detection> Detect(Bitmap frame,string name,CancellationToken token)
@@ -54,16 +58,17 @@ public sealed class Vision(Configuration config)
         if(frame.Width!=config.Scenario.Width || frame.Height!=config.Scenario.Height) throw new InvalidOperationException("캡처 크기가 설정과 다릅니다.");
         var target=config.Targets[name]; var area=target.Region.Rectangle;
         var ocrArea=target.OcrRegion?.Rectangle ?? area;
-        var lines=target.Text.Length==0 ? new List<TextHit>() : await Read(frame,ocrArea,1,token,filter:target.OcrFilter);
-        bool Match(TextHit h)=>target.Text.Any(t=>Matches(h.Text,t,target.Fuzzy));
-        bool HasEvidence()=>RecognitionRules.HasTextEvidence(lines.Select(l=>l.Text),target.Text,target.RequiredText,target.Fuzzy);
+        var phrases=target.ExactText?target.Text:Array.Empty<string>();
+        var lines=target.Text.Length==0 ? new List<TextHit>() : await Read(frame,ocrArea,1,token,filter:target.OcrFilter,exactPhrases:phrases);
+        bool Match(TextHit h)=>h.Bounds.Height>=target.MinimumTextHeight&&target.Text.Any(t=>target.ExactText?Normalize(h.Text)==Normalize(t):Matches(h.Text,t,target.Fuzzy));
+        bool HasEvidence()=>lines.Any(Match)&&target.RequiredText.All(t=>lines.Any(l=>Matches(l.Text,t)));
         if (target.Text.Length>0 && (!HasEvidence() || name=="menu" && MenuCount(lines)<3))
-            lines.AddRange(await Read(frame,ocrArea,2,token,filter:target.OcrFilter));
+            lines.AddRange(await Read(frame,ocrArea,2,token,filter:target.OcrFilter,exactPhrases:phrases));
         if(target.WhiteTextFallback && target.Text.Length>0 && !HasEvidence())
-            lines.AddRange(await Read(frame,ocrArea,2,token,whiteText:true,filter:target.OcrFilter));
+            lines.AddRange(await Read(frame,ocrArea,2,token,whiteText:true,filter:target.OcrFilter,exactPhrases:phrases));
         if(target.OcrFilter=="dither-gold" && !HasEvidence())
-            lines.AddRange(await Read(frame,ocrArea,2,token,filter:"dither-smooth"));
-        var textHit=lines.FirstOrDefault(Match);
+            lines.AddRange(await Read(frame,ocrArea,2,token,filter:"dither-smooth",exactPhrases:phrases));
+        var textHit=target.ExactText?lines.Where(Match).OrderBy(h=>h.Bounds.Width*h.Bounds.Height).FirstOrDefault():lines.FirstOrDefault(Match);
         if(name=="menu")
         {
             var count=MenuCount(lines);
@@ -99,7 +104,7 @@ public sealed class Vision(Configuration config)
             try {
                 double Median(Mat m) { var values=new byte[m.Rows*m.Cols]; for(int y=0;y<m.Rows;y++) for(int x=0;x<m.Cols;x++) values[y*m.Cols+x]=m.At<byte>(y,x); Array.Sort(values); return values[values.Length/2]; }
                 var b=Median(channels[0]);var g=Median(channels[1]);var r=Median(channels[2]);
-                color=g-Math.Max(r,b)>=60 || target.Color=="greenOrBlue" && b-Math.Max(r,g)>=60;
+                color=target.Color=="orange"?RevivalColor.IsOrange(r,g,b):g-Math.Max(r,b)>=60 || target.Color=="greenOrBlue" && b-Math.Max(r,g)>=60;
             } finally { foreach(var channel in channels) channel.Dispose(); }
         }
         var score=(textPassed?2:0)+(imagePassed?2:0)+(color?1:0);

@@ -12,6 +12,7 @@ public sealed class MainForm : Form
     private readonly CheckBox solo=new() {Text="혼자하기",Checked=true,AutoSize=true};
     private readonly CheckBox twoOrMore=new() {Text="2인이상",AutoSize=true};
     private bool changingPlayMode;
+    private readonly CheckBox autoRevive=new() {Text="행동불능 시 부활",AutoSize=true};
     private readonly CheckBox resume=new() {Text="현재 화면 재판별 후 시작",AutoSize=true};
     private readonly NumericUpDown limit=new() {Minimum=0,Maximum=99999,Value=1,Width=75};
     private readonly TextBox logs=new() {Multiline=true,ReadOnly=true,ScrollBars=ScrollBars.Vertical,Dock=DockStyle.Fill};
@@ -31,16 +32,17 @@ public sealed class MainForm : Form
         var top=new FlowLayoutPanel {Dock=DockStyle.Fill};top.Controls.AddRange([new Label {Text="목적지",AutoSize=true},destination,start,stop]);
         var modes=new FlowLayoutPanel {Dock=DockStyle.Fill};modes.Controls.AddRange([new Label {Text="실행 유형",AutoSize=true},solo,twoOrMore,new Label {Text=InputFactory.Description,AutoSize=true,ForeColor=Color.DimGray}]);
         var modeHelp=new ToolTip();modeHelp.SetToolTip(solo,"목표 횟수가 남으면 다시 하기로 다음 전투를 시작합니다.");modeHelp.SetToolTip(twoOrMore,"목표 횟수가 남으면 다른 던전 가기 → 목적지 선택 → 입장으로 진행합니다.");FormClosed+=(_,_)=>modeHelp.Dispose();
-        var settings=new FlowLayoutPanel {Dock=DockStyle.Fill};settings.Controls.AddRange([new Label {Text="목표 횟수 (0=무제한)",AutoSize=true},limit,skip,resume,new Label {Text="부활·음식·재접속: 자료 미등록 / 비활성",AutoSize=true,ForeColor=Color.DimGray}]);
+        var settings=new FlowLayoutPanel {Dock=DockStyle.Fill};settings.Controls.AddRange([new Label {Text="목표 횟수 (0=무제한)",AutoSize=true},limit,skip,resume,autoRevive,new Label {Text="음식·재접속: 자료 미등록 / 비활성",AutoSize=true,ForeColor=Color.DimGray}]);
         var tools=new FlowLayoutPanel {Dock=DockStyle.Fill};
         var import=new Button {Text="화면·템플릿 등록",AutoSize=true};var inspect=new Button {Text="저장 화면 인식 검사",AutoSize=true};
         var folder=new Button {Text="설정 폴더",AutoSize=true};var detail=new CheckBox {Text="상세 로그",Checked=true,AutoSize=true};
         tools.Controls.AddRange([import,inspect,folder,detail]);root.Controls.Add(top);root.Controls.Add(modes);root.Controls.Add(status);root.Controls.Add(settings);root.Controls.Add(tools);
         var bottom=new Panel {Dock=DockStyle.Fill};metrics.Dock=DockStyle.Top;bottom.Controls.Add(logs);bottom.Controls.Add(metrics);root.Controls.Add(bottom);Controls.Add(root);
-        locked.AddRange([destination,solo,twoOrMore,limit,skip,resume,import,inspect]);
-        try {var saved=RunOptions.Load();solo.Checked=saved.PlayMode==PlayMode.Solo;twoOrMore.Checked=!solo.Checked;}catch(Exception error){Log($"실행 유형 설정 읽기 실패: {error.Message}");}
+        locked.AddRange([destination,solo,twoOrMore,limit,skip,resume,autoRevive,import,inspect]);
+        try {var saved=RunOptions.Load();solo.Checked=saved.PlayMode==PlayMode.Solo;twoOrMore.Checked=!solo.Checked;autoRevive.Checked=saved.AutoRevive;}catch(Exception error){Log($"실행 유형 설정 읽기 실패: {error.Message}");}
         solo.CheckedChanged+=(_,_)=>ChooseMode(solo,twoOrMore);
         twoOrMore.CheckedChanged+=(_,_)=>ChooseMode(twoOrMore,solo);
+        autoRevive.CheckedChanged+=(_,_)=>{try {new RunOptions {PlayMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked),AutoRevive=autoRevive.Checked}.Save();}catch(Exception error){Log($"부활 설정 저장 실패: {error.Message}");}};
         start.Click+=async (_,_)=>await Start();stop.Click+=(_,_)=>Stop();import.Click+=(_,_)=>Import();inspect.Click+=async (_,_)=>await Inspect();
         detail.CheckedChanged+=(_,_)=>logs.Visible=detail.Checked;
         folder.Click+=(_,_)=>Process.Start(new ProcessStartInfo("explorer.exe",AppContext.BaseDirectory){UseShellExecute=true});
@@ -62,7 +64,7 @@ public sealed class MainForm : Form
         {
             if(selected.Checked)other.Checked=false;
             else if(!other.Checked)selected.Checked=true;
-            new RunOptions {PlayMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked)}.Save();
+            new RunOptions {PlayMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked),AutoRevive=autoRevive.Checked}.Save();
         }
         catch(Exception error){Log($"실행 유형 저장 실패: {error.Message}");}
         finally {changingPlayMode=false;}
@@ -80,18 +82,19 @@ public sealed class MainForm : Form
         try
         {
             var playMode=RunOptions.FromChecks(solo.Checked,twoOrMore.Checked);
-            new RunOptions {PlayMode=playMode}.Save();
+            new RunOptions {PlayMode=playMode,AutoRevive=autoRevive.Checked}.Save();
             var config=new Configuration();var window=new GameWindow(config.Scenario);var vision=new Vision(config);var journal=new Journal();journal.Message+=Log;
             journal.Write($"실행 유형: {RunOptions.Label(playMode)}");
             var engine=new Engine(config,window,vision,journal);
             engine.Changed+=stage=>BeginInvoke(()=>status.Text=StageName(stage));
+            engine.Notice+=message=>BeginInvoke(()=>status.Text=message);
             engine.Completed+=(number,_)=>BeginInvoke(()=>count=number);
             var target=new[]{"husang","kwanggi","moolgil"}[destination.SelectedIndex];
             // Other destinations need their own battle evidence, not the Husang objective.
             if(target!="husang")throw new InvalidOperationException("광기의 동굴·흩어진 물길은 실제 전투 화면과 영역 검증 후 지원합니다.");
-            cancellation=new();var token=cancellation.Token;var assist=skip.Checked;var maximum=(int)limit.Value;var recover=resume.Checked;
+            cancellation=new();var token=cancellation.Token;var assist=skip.Checked;var maximum=(int)limit.Value;var recover=resume.Checked;var revival=autoRevive.Checked;
             foreach(var control in locked)control.Enabled=false;start.Enabled=false;count=0;elapsed.Restart();
-            await Task.Run(()=>engine.Run(target,assist,maximum,recover,playMode,token));
+            await Task.Run(()=>engine.Run(target,assist,maximum,recover,playMode,revival,token));
             status.Text="정지됨 · 상세 로그를 확인하세요.";
         }
         catch(Exception error) {Log(error.ToString());status.Text=error.Message;}

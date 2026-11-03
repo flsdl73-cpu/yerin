@@ -9,7 +9,10 @@ public static class OfflineValidator
         ["chat"]=["main","battle","battle-live-01","battle-live-02","battle-dither"], ["menu"]=["menu"], ["abyss"]=["menu"],
         ["husang"]=["destinations"], ["kwanggi"]=["destinations"], ["moolgil"]=["destinations"],
         ["enter"]=["enter"], ["result"]=["result"], ["retry"]=["reward"], ["battle"]=["battle","battle-live-01","battle-live-02","battle-dither"],
-        ["skip"]=[], ["purchase"]=[], ["other_dungeon"]=["reward"]
+        ["skip"]=[], ["purchase"]=[], ["other_dungeon"]=["reward"],
+        ["incapacitated"]=["incapacitated-husang","incapacitated-goddess"],
+        ["revive"]=["incapacitated-husang","incapacitated-goddess"],
+        ["revive_count"]=["incapacitated-husang","incapacitated-goddess"]
     };
     public static async Task<int> Run(string screenDirectory,string outputDirectory)
     {
@@ -19,7 +22,7 @@ public static class OfflineValidator
         try
         {
             var config=new Configuration();var vision=new Vision(config);
-            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02","battle-dither"];
+            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02","battle-dither","incapacitated-husang","incapacitated-goddess"];
             var rows=new List<object>();int failures=0,checks=0;
             foreach(var screen in screens)
             {

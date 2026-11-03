@@ -21,6 +21,8 @@ public sealed class Target
     public bool RequireImage { get; set; }
     public bool RequireColor { get; set; }
     public bool Fuzzy { get; set; }
+    public bool ExactText { get; set; }
+    public int MinimumTextHeight { get; set; }
 }
 public sealed class Scenario
 {
@@ -31,6 +33,8 @@ public sealed class Scenario
     public int BattleTimeoutSeconds { get; set; } = 600;
     public int UnknownTimeoutSeconds { get; set; } = 15;
     public int MaximumRetries { get; set; } = 3;
+    public int RevivalTimeoutSeconds { get; set; } = 30;
+    public double RevivalIntervalSeconds { get; set; } = 4;
     public string WindowTitle { get; set; } = "마비노기 모바일";
 }
 public sealed class Configuration
@@ -44,6 +48,7 @@ public sealed class Configuration
         Scenario = JsonSerializer.Deserialize<Scenario>(File.ReadAllText(Path.Combine(Root, "scenario.json")), JsonOptions)!;
         Targets = JsonSerializer.Deserialize<Dictionary<string, Target>>(File.ReadAllText(Path.Combine(Root, "targets.json")), JsonOptions)!;
         if (Scenario.MaximumRetries is < 0 or > 3) throw new InvalidDataException("재시도는 0~3회여야 합니다.");
+        if(Scenario.RevivalTimeoutSeconds<10||!double.IsFinite(Scenario.RevivalIntervalSeconds)||Scenario.RevivalIntervalSeconds<4)throw new InvalidDataException("부활 간격은 최소 4초, 제한 시간은 최소 10초입니다.");
         foreach (var (name, t) in Targets)
         {
             var r = t.Region;
@@ -52,6 +57,7 @@ public sealed class Configuration
             if(t.OcrRegion is { } ocr && (ocr.Right<=ocr.Left || ocr.Bottom<=ocr.Top || !r.Rectangle.Contains(ocr.Rectangle)))
                 throw new InvalidDataException($"{name}: OCR 영역은 탐색 영역 내부여야 합니다.");
             if(t.OcrFilter is not ("none" or "dither-gold" or "dither-smooth"))throw new InvalidDataException($"{name}: OCR 전처리 설정 오류");
+            if(t.MinimumTextHeight<0||t.MinimumTextHeight>r.Rectangle.Height)throw new InvalidDataException($"{name}: OCR 글자 높이 설정 오류");
             if (t.Threshold is < 0 or > 1) throw new InvalidDataException($"{name}: 사진 기준 오류");
         }
     }
