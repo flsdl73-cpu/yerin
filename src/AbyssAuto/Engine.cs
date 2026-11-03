@@ -197,6 +197,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
             if((await Detect(frame,"result",token)).Passed) return;
             if((await Detect(frame,"battle",token)).Passed)
             {
+                if(unknown.IsRunning) {journal.Write("전투 UI 다시 확인: 관찰 대기 종료");Changed?.Invoke(Stage);}
                 unknown.Reset();
                 if(autoFood&&!foodSent)
                 {
@@ -213,8 +214,11 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
             }
             else
             {
-                if(!unknown.IsRunning) unknown.Start();
-                if(unknown.Elapsed.TotalSeconds>config.Scenario.UnknownTimeoutSeconds) throw new InvalidOperationException("전투 근거가 없는 화면이 지속됩니다. 부활·재접속 등 미등록 화면을 확인하세요.");
+                if(!unknown.IsRunning)
+                {
+                    unknown.Start();journal.Write("전투 UI 확인 대기: 입력 없이 결과·부활·전투 화면을 계속 관찰합니다.");
+                    Notice?.Invoke("전투 UI 확인 대기 · 입력 없음");
+                }
             }
             await Task.Delay(Random.Shared.Next(620,801),token);
         }

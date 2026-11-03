@@ -15,7 +15,7 @@ try {
     New-Item -ItemType Directory -Path artifacts/update/images -Force | Out-Null
     Copy-Item src/AbyssAuto/images/incapacitated.png, src/AbyssAuto/images/skip-scene.png artifacts/update/images/ -Force
     Copy-Item UPDATE-0.4.2.txt artifacts/update/ -Force
-    dotnet publish src/AbyssAuto/AbyssAuto.csproj -c Release -r win-x64 --self-contained true -p:DriverFree=true -p:Version=0.6.4 -o artifacts/no-driver
+    dotnet publish src/AbyssAuto/AbyssAuto.csproj -c Release -r win-x64 --self-contained true -p:DriverFree=true -p:Version=0.6.5 -o artifacts/no-driver
     if ($LASTEXITCODE -ne 0) { throw 'Driver-free publish failed' }
     Copy-Item NO-DRIVER.txt artifacts/no-driver/README.txt -Force
     Copy-Item validate-screens.ps1 artifacts/no-driver/ -Force

@@ -22,7 +22,7 @@ public static class OfflineValidator
         try
         {
             var config=new Configuration();var vision=new Vision(config);
-            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02","battle-dither","incapacitated-husang","incapacitated-goddess","incapacitated-live","boss-scene","battle-live-03"];
+            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02","battle-dither","incapacitated-husang","incapacitated-goddess","incapacitated-live","boss-scene","battle-live-03","ui-hidden-live"];
             var rows=new List<object>();int failures=0,checks=0;
             foreach(var screen in screens)
             {
