@@ -48,3 +48,17 @@ public class DecisionTests
         Assert.False(gate.Observe(true,true));Assert.True(gate.Observe(true,true));
     }
 }
+
+public class WhiteTextTests
+{
+    [Theory]
+    [InlineData(255,255,255,true)]
+    [InlineData(205,240,220,true)]
+    [InlineData(14,176,115,false)]
+    [InlineData(0,0,0,false)]
+    [InlineData(180,180,180,false)]
+    [InlineData(190,250,190,true)]
+    [InlineData(190,251,190,false)]
+    public void WhiteMaskPreservesTextAndRejectsButtonBackground(int r,int g,int b,bool expected)
+        =>Assert.Equal(expected,WhiteTextRules.IsGlyph((byte)r,(byte)g,(byte)b));
+}

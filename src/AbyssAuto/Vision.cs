@@ -5,18 +5,26 @@ using Windows.Media.Ocr;
 using CvRect = OpenCvSharp.Rect;
 namespace AbyssAuto;
 
-public sealed record TextHit(string Text, Rectangle Bounds);
+public sealed record TextHit(string Text, Rectangle Bounds, string Source="raw");
 public sealed record Detection(string Name, bool Passed, Rectangle Bounds, int Score, string Ocr,
-    string? Image, double ImageScore, bool Color, string Reason);
+    string? Image, double ImageScore, bool Color, string Reason, IReadOnlyList<TextHit>? OcrAttempts=null);
 public sealed class Vision(Configuration config)
 {
     private readonly OcrEngine ocr = OcrEngine.TryCreateFromLanguage(new Language("ko-KR"))
         ?? throw new InvalidOperationException("Windows 한국어 OCR 언어 팩을 설치해주세요.");
     public static string Normalize(string value) => TextRules.Normalize(value);
     public static bool Matches(string actual,string expected,bool fuzzy=false) => TextRules.Matches(actual,expected,fuzzy);
-    private async Task<List<TextHit>> Read(Bitmap frame, Rectangle area, int scale, CancellationToken token)
+    private async Task<List<TextHit>> Read(Bitmap frame, Rectangle area, int scale, CancellationToken token, bool whiteText=false)
     {
         using var crop=frame.Clone(area, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        if(whiteText)
+        {
+            for(var y=0;y<crop.Height;y++)for(var x=0;x<crop.Width;x++)
+            {
+                var pixel=crop.GetPixel(x,y);
+                crop.SetPixel(x,y,WhiteTextRules.IsGlyph(pixel.R,pixel.G,pixel.B)?System.Drawing.Color.Black:System.Drawing.Color.White);
+            }
+        }
         using var resized=new Bitmap(crop,new System.Drawing.Size(crop.Width*scale,crop.Height*scale));
         using var stream=new MemoryStream(); resized.Save(stream,System.Drawing.Imaging.ImageFormat.Png); stream.Position=0;
         var decoder=await BitmapDecoder.CreateAsync(stream.AsRandomAccessStream());
@@ -29,12 +37,12 @@ public sealed class Vision(Configuration config)
             var top=boxes.Min(b=>b.Top)/scale+area.Top;
             var right=boxes.Max(b=>b.Right)/scale+area.Left;
             var bottom=boxes.Max(b=>b.Bottom)/scale+area.Top;
-            return new TextHit(line.Text,Rectangle.FromLTRB((int)Math.Floor(left),(int)Math.Floor(top),(int)Math.Ceiling(right),(int)Math.Ceiling(bottom)));
+            return new TextHit(line.Text,Rectangle.FromLTRB((int)Math.Floor(left),(int)Math.Floor(top),(int)Math.Ceiling(right),(int)Math.Ceiling(bottom)),$"{(whiteText?"white-mask":"original")}-{scale}x");
         }).ToList();
         // OCR can group a complete menu row into one line; retain exact individual labels too.
         hits.AddRange(result.Lines.SelectMany(l=>l.Words).Select(word=> {
             var b=word.BoundingRect;
-            return new TextHit(word.Text,Rectangle.FromLTRB((int)Math.Floor(b.Left/scale)+area.Left,(int)Math.Floor(b.Top/scale)+area.Top,(int)Math.Ceiling(b.Right/scale)+area.Left,(int)Math.Ceiling(b.Bottom/scale)+area.Top));
+            return new TextHit(word.Text,Rectangle.FromLTRB((int)Math.Floor(b.Left/scale)+area.Left,(int)Math.Floor(b.Top/scale)+area.Top,(int)Math.Ceiling(b.Right/scale)+area.Left,(int)Math.Ceiling(b.Bottom/scale)+area.Top),$"{(whiteText?"white-mask":"original")}-{scale}x");
         }));
         return hits;
     }
@@ -43,15 +51,18 @@ public sealed class Vision(Configuration config)
         token.ThrowIfCancellationRequested();
         if(frame.Width!=config.Scenario.Width || frame.Height!=config.Scenario.Height) throw new InvalidOperationException("캡처 크기가 설정과 다릅니다.");
         var target=config.Targets[name]; var area=target.Region.Rectangle;
-        var lines=target.Text.Length==0 ? new List<TextHit>() : await Read(frame,area,1,token);
+        var ocrArea=target.OcrRegion?.Rectangle ?? area;
+        var lines=target.Text.Length==0 ? new List<TextHit>() : await Read(frame,ocrArea,1,token);
         bool Match(TextHit h)=>target.Text.Any(t=>Matches(h.Text,t,target.Fuzzy));
         if (target.Text.Length>0 && (!lines.Any(Match) || name=="menu" && MenuCount(lines)<3))
-            lines.AddRange(await Read(frame,area,2,token));
+            lines.AddRange(await Read(frame,ocrArea,2,token));
+        if(target.WhiteTextFallback && target.Text.Length>0 && !lines.Any(Match))
+            lines.AddRange(await Read(frame,ocrArea,2,token,whiteText:true));
         var textHit=lines.FirstOrDefault(Match);
         if(name=="menu")
         {
             var count=MenuCount(lines);
-            return new(name,count>=3,area,count,string.Join(" | ",lines.Select(l=>l.Text).Distinct()),null,0,false,$"서로 다른 메뉴 {count}개");
+            return new(name,count>=3,area,count,string.Join(" | ",lines.Select(l=>l.Text).Distinct()),null,0,false,$"서로 다른 메뉴 {count}개",lines.ToArray());
         }
         Rectangle imageBounds=Rectangle.Empty; double imageScore=0; string? imageName=null;
         using var png=new MemoryStream(); frame.Save(png,System.Drawing.Imaging.ImageFormat.Png);
@@ -88,7 +99,7 @@ public sealed class Vision(Configuration config)
         }
         var score=(textPassed?2:0)+(imagePassed?2:0)+(color?1:0);
         var passed=!conflict && !candidate.IsEmpty && score>=target.MinimumScore && (!target.RequireText||textPassed) && (!target.RequireImage||imagePassed) && (!target.RequireColor||color);
-        return new(name,passed,candidate,score,string.Join(" | ",lines.Select(l=>l.Text).Distinct()),imageName,imageScore,color,conflict?"OCR과 사진 위치 충돌":passed?"합격":"근거 부족");
+        return new(name,passed,candidate,score,string.Join(" | ",lines.Select(l=>l.Text).Distinct()),imageName,imageScore,color,conflict?"OCR과 사진 위치 충돌":passed?"합격":"근거 부족",lines.ToArray());
     }
     private static int MenuCount(List<TextHit> lines)
     {

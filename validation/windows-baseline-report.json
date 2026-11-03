@@ -1,0 +1,3032 @@
+{
+  "time": "2026-11-03T16:55:45.3360159+09:00",
+  "checks": 84,
+  "failures": 1,
+  "rows": [
+    {
+      "screen": "main",
+      "target": "chat",
+      "expected": true,
+      "detection": {
+        "Name": "chat",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 111,
+            "Y": 821
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 129,
+            "Height": 18
+          },
+          "X": 111,
+          "Y": 821,
+          "Width": 129,
+          "Height": 18,
+          "Left": 111,
+          "Top": 821,
+          "Right": 240,
+          "Bottom": 839,
+          "IsEmpty": false
+        },
+        "Score": 2,
+        "Ocr": "내 주변에 말하기 | 9 | 내 | 주변에 | 말하기",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "menu",
+      "expected": false,
+      "detection": {
+        "Name": "menu",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 1,
+        "Ocr": "퀘스트 | + 소환 결계 퇴치 | 소환 결계로 이동 | + | 소환 | 결계 | 퇴치 | 결계로 | 이동 | 丁천十 퀘스트 | • 소환 결계 퇴치 | 丁천十 | •",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 1개"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "abyss",
+      "expected": false,
+      "detection": {
+        "Name": "abyss",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_abyss.png",
+        "ImageScore": 0.15405142307281494,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "husang",
+      "expected": false,
+      "detection": {
+        "Name": "husang",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_husang.png",
+        "ImageScore": 0.018558254465460777,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "kwanggi",
+      "expected": false,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "moolgil",
+      "expected": false,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_moolgil.png",
+        "ImageScore": 0.026623303070664406,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "enter",
+      "expected": false,
+      "detection": {
+        "Name": "enter",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "result",
+      "expected": false,
+      "detection": {
+        "Name": "result",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "touch.png",
+        "ImageScore": 0.09877701848745346,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "retry",
+      "expected": false,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "battle",
+      "expected": false,
+      "detection": {
+        "Name": "battle",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "• 소환 결계 퇴치 | 소환 결계로 미동 | • | 소환 | 결계 | 퇴치 | 결계로 | 미동 | 소환 결계로 이동 | 이동",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "main",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "1/10 | 00 | <은근> | 친절한 | 우유I빵•J | <과도한르늗이> | 말랑말랑한 | 이l아로스曾호> 닣 | +짝OI는 | 프니 | 고도 0 | 구진1 제하x | 연갈색 시추 개구리 <미스디> | #FFFFFF | -이어 | 이l아로스曾호> | 닣 | 고도 | 0 | 구진1 | 제하x | 연갈색 | 시추 | 개구리 | <미스디>",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "chat",
+      "expected": false,
+      "detection": {
+        "Name": "chat",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "menu",
+      "expected": true,
+      "detection": {
+        "Name": "menu",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 8,
+        "Ocr": "•㉢ | 캐릭터 | 월드 보스 | 가방 | 아르바이트 | 어비스 | 크래프팅 | 미션 | 망령의 탑 | 연금술 | 거래소 | 레미드 | 성장기0드 | 9 | 플레이 힌트 | 환경 설정 | 월드 | 보스 | 망령의 | 탑 | 플레이 | 힌트 | 환경 | 설정",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 8개"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "abyss",
+      "expected": true,
+      "detection": {
+        "Name": "abyss",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 955,
+            "Y": 365
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 53,
+            "Height": 60
+          },
+          "X": 955,
+          "Y": 365,
+          "Width": 53,
+          "Height": 60,
+          "Left": 955,
+          "Top": 365,
+          "Right": 1008,
+          "Bottom": 425,
+          "IsEmpty": false
+        },
+        "Score": 4,
+        "Ocr": "어비스",
+        "Image": "a_abyss.png",
+        "ImageScore": 1,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "husang",
+      "expected": false,
+      "detection": {
+        "Name": "husang",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_husang.png",
+        "ImageScore": 0.01765519380569458,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "kwanggi",
+      "expected": false,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_kwanggi.png",
+        "ImageScore": 0.04959176480770111,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "moolgil",
+      "expected": false,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_moolgil.png",
+        "ImageScore": 0.08521699160337448,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "enter",
+      "expected": false,
+      "detection": {
+        "Name": "enter",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "소물스트림 | 위무 H[구尹 | 보관합 | 0田|홈 | 게& | 위무 | H[구尹 | 위국H|구尹 | 보관함 | 이이홈",
+        "Image": "a_enter.png",
+        "ImageScore": 0.012335868552327156,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "result",
+      "expected": false,
+      "detection": {
+        "Name": "result",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "touch.png",
+        "ImageScore": 0.1336248815059662,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "retry",
+      "expected": false,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "battle",
+      "expected": false,
+      "detection": {
+        "Name": "battle",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "X | 꿈지Å卜함 | 우 | 후편함 | 공지사함 | 우편함",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "menu",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "•㉢ | 캐릭터 | 월드 보스 | 니OI트메어 | 드릴 | 업적 | 탈것과 | 가방 | 아르바이트 | 어비스 | 도감 | 친구 | 크래프팅 | 미션 | 망령의 탑 | 모험) 卜매스 | 월드 | 보스 | 망령의 | 탑 | 모험) | 卜매스 | 퀘스트 | 나이트메어 | 十 | 6 | 티ㆍ | 망령의 탐 | 모험가 패스 | 길드 | 탐 | 모험가 | 패스",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "chat",
+      "expected": false,
+      "detection": {
+        "Name": "chat",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "디1|스(398긹:",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "menu",
+      "expected": false,
+      "detection": {
+        "Name": "menu",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 0개"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "abyss",
+      "expected": false,
+      "detection": {
+        "Name": "abyss",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_abyss.png",
+        "ImageScore": 0.19897659122943878,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "husang",
+      "expected": true,
+      "detection": {
+        "Name": "husang",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 738,
+            "Y": 122
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 497,
+            "Height": 90
+          },
+          "X": 738,
+          "Y": 122,
+          "Width": 497,
+          "Height": 90,
+          "Left": 738,
+          "Top": 122,
+          "Right": 1235,
+          "Bottom": 212,
+          "IsEmpty": false
+        },
+        "Score": 2,
+        "Ocr": "",
+        "Image": "a_husang.png",
+        "ImageScore": 1,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "kwanggi",
+      "expected": true,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 738,
+            "Y": 245
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 497,
+            "Height": 90
+          },
+          "X": 738,
+          "Y": 245,
+          "Width": 497,
+          "Height": 90,
+          "Left": 738,
+          "Top": 245,
+          "Right": 1235,
+          "Bottom": 335,
+          "IsEmpty": false
+        },
+        "Score": 2,
+        "Ocr": "",
+        "Image": "a_kwanggi.png",
+        "ImageScore": 1,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "moolgil",
+      "expected": true,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 738,
+            "Y": 368
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 497,
+            "Height": 90
+          },
+          "X": 738,
+          "Y": 368,
+          "Width": 497,
+          "Height": 90,
+          "Left": 738,
+          "Top": 368,
+          "Right": 1235,
+          "Bottom": 458,
+          "IsEmpty": false
+        },
+        "Score": 2,
+        "Ocr": "",
+        "Image": "a_moolgil.png",
+        "ImageScore": 1,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "enter",
+      "expected": false,
+      "detection": {
+        "Name": "enter",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "result",
+      "expected": false,
+      "detection": {
+        "Name": "result",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "touch.png",
+        "ImageScore": 0.08835388720035553,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "retry",
+      "expected": false,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "battle",
+      "expected": false,
+      "detection": {
+        "Name": "battle",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "destinations",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "1 | 결리어 | 동글 l지옥1 결리어 | 정박지 I 지옥1 륟근l어 | C5일후수령기들 | 광기의 동글 | kI*2 | 鏖어진 물길 | 매우 어려움 | 수. | 동글 | l지옥1 | 정박지 | I | 지옥1 | 륟근l어 | 광기의 | 鏖어진 | 물길 | 매우 | 어려움 | 매우 어려움2 | 광기의 동굴 | 지옥2 | 흘어진 물길 | 물길 / 지목1 들리어 | 동굴 지옥1 클리어 | 정박지 지목1 들리어 | 5일 후 수령 가능 | 어려움2 | 동굴 | 흘어진 | / | 지목1 | 들리어 | 클리어 | 5일 | 후 | 수령 | 가능",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "chat",
+      "expected": false,
+      "detection": {
+        "Name": "chat",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "menu",
+      "expected": false,
+      "detection": {
+        "Name": "menu",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 0개"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "abyss",
+      "expected": false,
+      "detection": {
+        "Name": "abyss",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "husang",
+      "expected": false,
+      "detection": {
+        "Name": "husang",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_husang.png",
+        "ImageScore": 0.25079357624053955,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "kwanggi",
+      "expected": false,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_kwanggi.png",
+        "ImageScore": 0.1514258086681366,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "moolgil",
+      "expected": false,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_moolgil.png",
+        "ImageScore": 0.1450572907924652,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "enter",
+      "expected": true,
+      "detection": {
+        "Name": "enter",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 770,
+            "Y": 790
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 440,
+            "Height": 46
+          },
+          "X": 770,
+          "Y": 790,
+          "Width": 440,
+          "Height": 46,
+          "Left": 770,
+          "Top": 790,
+          "Right": 1210,
+          "Bottom": 836,
+          "IsEmpty": false
+        },
+        "Score": 5,
+        "Ocr": "입장하기",
+        "Image": "a_enter.png",
+        "ImageScore": 0.9999998807907104,
+        "Color": true,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "result",
+      "expected": false,
+      "detection": {
+        "Name": "result",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "touch.png",
+        "ImageScore": 0.07413918524980545,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "retry",
+      "expected": false,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "battle",
+      "expected": false,
+      "detection": {
+        "Name": "battle",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "enter",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "매우 어려움 | 권장 인원 | 4명 | 매우 어려움2 | ntEl 부활 제한 | 6회 | 지목1 | 어비스전리품 (춓〕 皀 | 주요 전리품 | 남은 | e:적囹최〔 | 도르 권주세머 권주세0해 | 6궑심의 기획 석 | 트리귄륜 드레스 (여성해 | 매우 | 어려움 | 권장 | 인원 | 어려움2 | ntEl | 부활 | 제한 | 어비스전리품 | (춓〕 | 皀 | 주요 | 전리품 | 도르 | 권주세머 | 권주세0해 | 6궑심의 | 기획 | 석 | 트리귄륜 | 드레스 | (여성해 | 파티 부활 제한 | 지옥1 | 어비스 전리훔 | 남은들 | 0 | 도르 코르세어 모르 코르세어 | 허상의 미력석 | 트리코른 드레스 (여성해 | 파티 | 어비스 | 전리훔 | 코르세어 | 모르 | 허상의 | 미력석 | 트리코른",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "chat",
+      "expected": true,
+      "detection": {
+        "Name": "chat",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 111,
+            "Y": 819
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 129,
+            "Height": 24
+          },
+          "X": 111,
+          "Y": 819,
+          "Width": 129,
+          "Height": 24,
+          "Left": 111,
+          "Top": 819,
+          "Right": 240,
+          "Bottom": 843,
+          "IsEmpty": false
+        },
+        "Score": 2,
+        "Ocr": "내 주변에 말하기 | 내 | 주변에 | 말하기",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "menu",
+      "expected": false,
+      "detection": {
+        "Name": "menu",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 0,
+        "Ocr": "11:예 | 十61상의 정박지 들리어 | 부활 6회 이내로 털리어 | [주간 목표] 모험가 길드의 정기 의뢰 | 누가 더 무)`레일? | C 8일 남을 | 는님신 보석을 찾아서 ,` | 법황정의 특별 의뢰 | 十61상의 | 정박지 | 들리어 | 부활 | 6회 | 이내로 | 털리어 | [주간 | 목표] | 모험가 | 길드의 | 정기 | 의뢰 | 누가 | 더 | 무)`레일? | C | 8일 | 남을 | 는님신 | 보석을 | 찾아서 | ,` | 법황정의 | 특별 | 11℃0 | • 허상의 정박지 클리어 | • 부활 6회 이내로 클리어 | 누가 더 무서워? | 8일 남음 | - 눈넊신 보석을 찾아서 수 | 법황청의 특별 의회 | • | 허상의 | 클리어 | 무서워? | 남음 | - | 눈넊신 | 수 | 법황청의 | 의회",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 0개"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "abyss",
+      "expected": false,
+      "detection": {
+        "Name": "abyss",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_abyss.png",
+        "ImageScore": 0.23811553418636322,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "husang",
+      "expected": false,
+      "detection": {
+        "Name": "husang",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "kwanggi",
+      "expected": false,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_kwanggi.png",
+        "ImageScore": 0.06602828204631805,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "moolgil",
+      "expected": false,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_moolgil.png",
+        "ImageScore": 0.10147843509912491,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "enter",
+      "expected": false,
+      "detection": {
+        "Name": "enter",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "-49喬0 | 작까0貳玎",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "result",
+      "expected": false,
+      "detection": {
+        "Name": "result",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "touch.png",
+        "ImageScore": 0.015255277045071125,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "retry",
+      "expected": false,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "battle",
+      "expected": true,
+      "detection": {
+        "Name": "battle",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 1063,
+            "Y": 235
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 214,
+            "Height": 21
+          },
+          "X": 1063,
+          "Y": 235,
+          "Width": 214,
+          "Height": 21,
+          "Left": 1063,
+          "Top": 235,
+          "Right": 1277,
+          "Bottom": 256,
+          "IsEmpty": false
+        },
+        "Score": 2,
+        "Ocr": "十61상의 정박지 들리어 | 부활 6회 미대로 -결근 | 十61상의 | 정박지 | 들리어 | 부활 | 6회 | 미대로 | -결근 | • 허상의 정박지 클리어 | • 부활 6회 이내로 클리어 | • | 허상의 | 클리어 | 이내로",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "battle",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "00 | 1/10 | 바다의 악령 | 주) 적으로 H卜다의 악령들이 | 등장하며 전방으로 전진하면서 공격 | (매스틱, | #FFFFFF | 조각난Å|파이어 | 아이템이 많아 무거워졌다. | 정리하는 게 좋을 것 같다. | [주간 목. | 바다의 | 악령 | 주) | 적으로 | H卜다의 | 악령들이 | 등장하며 | 전방으로 | 전진하면서 | 공격 | 아이템이 | 많아 | 무거워졌다. | 정리하는 | 게 | 좋을 | 것 | 같다. | [주간 | 목. | 주) 적으로 바다의 악령들이 | <미스리> | 조각난Å}파이어 | [주간 목: | 목:",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "chat",
+      "expected": false,
+      "detection": {
+        "Name": "chat",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "menu",
+      "expected": false,
+      "detection": {
+        "Name": "menu",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 0개"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "abyss",
+      "expected": false,
+      "detection": {
+        "Name": "abyss",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_abyss.png",
+        "ImageScore": 0.10537651926279068,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "husang",
+      "expected": false,
+      "detection": {
+        "Name": "husang",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_husang.png",
+        "ImageScore": 0.12365395575761795,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "kwanggi",
+      "expected": false,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "moolgil",
+      "expected": false,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "enter",
+      "expected": false,
+      "detection": {
+        "Name": "enter",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_enter.png",
+        "ImageScore": 0.17160463333129883,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "result",
+      "expected": true,
+      "detection": {
+        "Name": "result",
+        "Passed": true,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 545,
+            "Y": 792
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 210,
+            "Height": 32
+          },
+          "X": 545,
+          "Y": 792,
+          "Width": 210,
+          "Height": 32,
+          "Left": 545,
+          "Top": 792,
+          "Right": 755,
+          "Bottom": 824,
+          "IsEmpty": false
+        },
+        "Score": 4,
+        "Ocr": ",화면을 터치해 주세및 | ,화면을 | 터치해 | 주세및",
+        "Image": "touch.png",
+        "ImageScore": 0.9999995231628418,
+        "Color": false,
+        "Reason": "합격"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "retry",
+      "expected": false,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "편들 터치해 주세| | 편들 | 터치해 | 주세| | 편을 터치6H 주세! | 편을 | 터치6H | 주세!",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "battle",
+      "expected": false,
+      "detection": {
+        "Name": "battle",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "result",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "chat",
+      "expected": false,
+      "detection": {
+        "Name": "chat",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "menu",
+      "expected": false,
+      "detection": {
+        "Name": "menu",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": false,
+            "X": 850,
+            "Y": 160
+          },
+          "Size": {
+            "IsEmpty": false,
+            "Width": 446,
+            "Height": 270
+          },
+          "X": 850,
+          "Y": 160,
+          "Width": 446,
+          "Height": 270,
+          "Left": 850,
+          "Top": 160,
+          "Right": 1296,
+          "Bottom": 430,
+          "IsEmpty": false
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "서로 다른 메뉴 0개"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "abyss",
+      "expected": false,
+      "detection": {
+        "Name": "abyss",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_abyss.png",
+        "ImageScore": 0.03338944539427757,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "husang",
+      "expected": false,
+      "detection": {
+        "Name": "husang",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "kwanggi",
+      "expected": false,
+      "detection": {
+        "Name": "kwanggi",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "moolgil",
+      "expected": false,
+      "detection": {
+        "Name": "moolgil",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": "a_moolgil.png",
+        "ImageScore": 0.16413119435310364,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "enter",
+      "expected": false,
+      "detection": {
+        "Name": "enter",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "다른 던전 가기 | 다른 | 던전 | 가기",
+        "Image": "a_enter.png",
+        "ImageScore": 0.3496472239494324,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "result",
+      "expected": false,
+      "detection": {
+        "Name": "result",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "Space | 하기 | 다셔 하기 | 다셔",
+        "Image": "touch.png",
+        "ImageScore": 0.20715735852718353,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "retry",
+      "expected": true,
+      "detection": {
+        "Name": "retry",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "담k`6`기 | Space | Ctkl 하기 | Ctkl | 하기",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "battle",
+      "expected": false,
+      "detection": {
+        "Name": "battle",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "skip",
+      "expected": false,
+      "detection": {
+        "Name": "skip",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    },
+    {
+      "screen": "reward",
+      "target": "purchase",
+      "expected": false,
+      "detection": {
+        "Name": "purchase",
+        "Passed": false,
+        "Bounds": {
+          "Location": {
+            "IsEmpty": true,
+            "X": 0,
+            "Y": 0
+          },
+          "Size": {
+            "IsEmpty": true,
+            "Width": 0,
+            "Height": 0
+          },
+          "X": 0,
+          "Y": 0,
+          "Width": 0,
+          "Height": 0,
+          "Left": 0,
+          "Top": 0,
+          "Right": 0,
+          "Bottom": 0,
+          "IsEmpty": true
+        },
+        "Score": 0,
+        "Ocr": "61A 4박지 | ( 전투 사간 323 | 하트 토큰 | 발견한전리품 | 마물 회치 증표 | 4 | 허상의 마력석 | 시즌 경험치 | 아이템을 누르면 상세 정보를 몰 수 있습니다 | 61A | 4박지 | ( | 전투 | 사간 | 323 | 하트 | 토큰 | 마물 | 회치 | 증표 | 허상의 | 마력석 | 시즌 | 경험치 | 아이템을 | 누르면 | 상세 | 정보를 | 몰 | 수 | 있습니다 | 허상의 경박자 | 고 二 | e 전두Å|간 323 | 발견한 전리품 | 300 | 마물 퇴치 증표 | 9 | 아이템을 누르면 상세 정보를 볼 수 있습니다 | 경박자 | 고 | 二 | e | 전두Å|간 | 발견한 | 전리품 | 퇴치 | 볼",
+        "Image": null,
+        "ImageScore": 0,
+        "Color": false,
+        "Reason": "근거 부족"
+      }
+    }
+  ],
+  "limitation": "Saved screenshots only. Skip/purchase have negative examples only. This does not validate live input, timing, repeated runs or independent positives."
+}

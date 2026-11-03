@@ -9,6 +9,8 @@ public sealed record Region(int Left, int Top, int Right, int Bottom)
 public sealed class Target
 {
     public Region Region { get; set; } = new(0, 0, 1, 1);
+    public Region? OcrRegion { get; set; }
+    public bool WhiteTextFallback { get; set; }
     public string[] Text { get; set; } = [];
     public string[] Images { get; set; } = [];
     public double Threshold { get; set; } = .75;
@@ -46,6 +48,8 @@ public sealed class Configuration
             var r = t.Region;
             if (r.Left < 0 || r.Top < 0 || r.Right > Scenario.Width || r.Bottom > Scenario.Height || r.Right <= r.Left || r.Bottom <= r.Top)
                 throw new InvalidDataException($"{name}: 인식 영역 오류");
+            if(t.OcrRegion is { } ocr && (ocr.Right<=ocr.Left || ocr.Bottom<=ocr.Top || !r.Rectangle.Contains(ocr.Rectangle)))
+                throw new InvalidDataException($"{name}: OCR 영역은 탐색 영역 내부여야 합니다.");
             if (t.Threshold is < 0 or > 1) throw new InvalidDataException($"{name}: 사진 기준 오류");
         }
     }

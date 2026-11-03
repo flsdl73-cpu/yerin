@@ -36,3 +36,8 @@ public static class TextRules
         return previous[^1]<=1;
     }
 }
+
+public static class WhiteTextRules
+{
+    public static bool IsGlyph(byte r,byte g,byte b) => Math.Min(r,Math.Min(g,b))>=190 && Math.Max(r,Math.Max(g,b))-Math.Min(r,Math.Min(g,b))<=60;
+}
