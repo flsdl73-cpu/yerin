@@ -185,10 +185,12 @@
       "장면 넘기기",
       "대화 넘기기"
     ],
-    "Images": [],
-    "Threshold": 0.75,
+    "Images": [
+      "skip-scene.png"
+    ],
+    "Threshold": 0.9,
     "MinimumScore": 2,
-    "RequireText": true
+    "RequireText": false
   },
   "purchase": {
     "Region": {
@@ -244,10 +246,13 @@
     "Text": [
       "행동불능"
     ],
-    "Images": [],
+    "Images": [
+      "incapacitated.png"
+    ],
     "MinimumScore": 2,
-    "RequireText": true,
-    "MinimumTextHeight": 26
+    "RequireText": false,
+    "MinimumTextHeight": 26,
+    "Threshold": 0.9
   },
   "revive": {
     "Region": {

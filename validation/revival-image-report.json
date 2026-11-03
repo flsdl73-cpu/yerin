@@ -1,0 +1,76 @@
+{
+  "threshold": 0.9,
+  "rows": [
+    {
+      "screen": "incapacitated-husang",
+      "imageScore": 0.9147923588752747,
+      "expected": true
+    },
+    {
+      "screen": "boss-scene",
+      "imageScore": 0.08056299388408661,
+      "expected": false
+    },
+    {
+      "screen": "reward",
+      "imageScore": 0.08720510452985764,
+      "expected": false
+    },
+    {
+      "screen": "incapacitated-goddess",
+      "imageScore": 0.9977442026138306,
+      "expected": true
+    },
+    {
+      "screen": "main",
+      "imageScore": 0.06946731358766556,
+      "expected": false
+    },
+    {
+      "screen": "battle-dither",
+      "imageScore": 0.09934228658676147,
+      "expected": false
+    },
+    {
+      "screen": "menu",
+      "imageScore": 0.04748931899666786,
+      "expected": false
+    },
+    {
+      "screen": "battle-live-01",
+      "imageScore": 0.05063287541270256,
+      "expected": false
+    },
+    {
+      "screen": "incapacitated-live",
+      "imageScore": 0.9999998211860657,
+      "expected": true
+    },
+    {
+      "screen": "battle",
+      "imageScore": 0.12012692540884018,
+      "expected": false
+    },
+    {
+      "screen": "destinations",
+      "imageScore": 0.07323422282934189,
+      "expected": false
+    },
+    {
+      "screen": "battle-live-02",
+      "imageScore": 0.053323231637477875,
+      "expected": false
+    },
+    {
+      "screen": "enter",
+      "imageScore": 0.00881371833384037,
+      "expected": false
+    },
+    {
+      "screen": "result",
+      "imageScore": 0.06380712985992432,
+      "expected": false
+    }
+  ],
+  "limitation": "Image evidence only; button still requires exact Windows OCR and orange background. No live clicks tested."
+}

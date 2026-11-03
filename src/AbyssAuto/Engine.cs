@@ -184,14 +184,15 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
         while(timer.Elapsed.TotalSeconds<config.Scenario.BattleTimeoutSeconds)
         {
             var frame=await PrepareFrame(token);
-            if(skip)
+            var scene=await Detect(frame,"skip",token);
+            if(scene.Passed)
             {
-                var button=await Detect(frame,"skip",token);
-                if(button.Passed)
+                unknown.Reset();
+                if(skip)
                 {
-                    journal.Input($"넘기기 클릭 시도 {button.Bounds}");await input!.Click(button.Bounds,token);journal.Write("넘기기 입력 전달 성공",button);
-                    await Task.Delay(300,token);continue;
+                    journal.Input($"넘기기 클릭 시도 {scene.Bounds}");await input!.Click(scene.Bounds,token);journal.Write("넘기기 입력 전달 성공",scene);
                 }
+                await Task.Delay(450,token);continue;
             }
             if((await Detect(frame,"result",token)).Passed) return;
             if((await Detect(frame,"battle",token)).Passed) unknown.Reset();

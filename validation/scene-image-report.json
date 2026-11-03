@@ -1,0 +1,76 @@
+{
+  "threshold": 0.9,
+  "rows": [
+    {
+      "screen": "incapacitated-husang",
+      "score": 0.19128336012363434,
+      "expected": false
+    },
+    {
+      "screen": "boss-scene",
+      "score": 0.9999999403953552,
+      "expected": true
+    },
+    {
+      "screen": "reward",
+      "score": 0.07713013142347336,
+      "expected": false
+    },
+    {
+      "screen": "incapacitated-goddess",
+      "score": 0.19291062653064728,
+      "expected": false
+    },
+    {
+      "screen": "main",
+      "score": 0.1770339161157608,
+      "expected": false
+    },
+    {
+      "screen": "battle-dither",
+      "score": 0.12717205286026,
+      "expected": false
+    },
+    {
+      "screen": "menu",
+      "score": 0.22218044102191925,
+      "expected": false
+    },
+    {
+      "screen": "battle-live-01",
+      "score": 0.16703079640865326,
+      "expected": false
+    },
+    {
+      "screen": "incapacitated-live",
+      "score": 0.19693294167518616,
+      "expected": false
+    },
+    {
+      "screen": "battle",
+      "score": 0.16922618448734283,
+      "expected": false
+    },
+    {
+      "screen": "destinations",
+      "score": 0.1846880167722702,
+      "expected": false
+    },
+    {
+      "screen": "battle-live-02",
+      "score": 0.1636175662279129,
+      "expected": false
+    },
+    {
+      "screen": "enter",
+      "score": 0.0648040920495987,
+      "expected": false
+    },
+    {
+      "screen": "result",
+      "score": 0.104324571788311,
+      "expected": false
+    }
+  ],
+  "limitation": "Template-source positive and supplied negatives only; no live input."
+}
