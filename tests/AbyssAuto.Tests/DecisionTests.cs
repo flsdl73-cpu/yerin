@@ -62,3 +62,35 @@ public class WhiteTextTests
     public void WhiteMaskPreservesTextAndRejectsButtonBackground(int r,int g,int b,bool expected)
         =>Assert.Equal(expected,WhiteTextRules.IsGlyph((byte)r,(byte)g,(byte)b));
 }
+
+public class BattleEvidenceTests
+{
+    [Theory]
+    [InlineData("허상의 정박지 클리|부활 6회 이내로 클리|",true)]
+    [InlineData("허상의 정박지 들리|부활 6회 이내로 결」",true)]
+    [InlineData("허상의 정박지 클리어",false)]
+    [InlineData("부활 6회 이내로 클리어",false)]
+    [InlineData("광기의 동굴 클리어|부활 6회",false)]
+    [InlineData("소환 결계 퇴치|말하기",false)]
+    [InlineData("허상의 정박지|여기서 부활",false)]
+    public void RequireObjectiveAndDungeonSubgoal(string ocr,bool expected)
+        =>Assert.Equal(expected,RecognitionRules.HasTextEvidence(ocr.Split('|'),["허상의 정박지"],["부활 6회"]));
+    [Fact] public void ReplayActualFailedBattleOcr()
+    {
+        using var fixture=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"live-battle-ocr.json")));
+        var lines=fixture.RootElement.GetProperty("attempts").EnumerateArray().Select(x=>x.GetProperty("Text").GetString()!).ToArray();
+        Assert.DoesNotContain(lines,x=>TextRules.Matches(x,"허상의 정박지 클리어"));
+        Assert.True(RecognitionRules.HasTextEvidence(lines,["허상의 정박지"],["부활 6회"]));
+    }
+}
+
+public class StartStageTests
+{
+    [Fact] public void InitialStartAllowsConfirmedMain()=>Assert.Equal(Stage.Menu,StartStagePolicy.Resolve(false,[],true));
+    [Fact] public void OpenMenuDoesNotNeedEscape()=>Assert.Equal(Stage.Abyss,StartStagePolicy.Resolve(false,[Stage.Abyss],false));
+    [Fact] public void InitialStartCannotOpenMenuDuringBattle()=>Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(false,[Stage.Battle],true));
+    [Fact] public void ResumeUsesBattleStage()=>Assert.Equal(Stage.Battle,StartStagePolicy.Resolve(true,[Stage.Battle],true));
+    [Fact] public void UnknownResumeDoesNotResetFromChat()=>Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(true,[],true));
+    [Fact] public void ConflictingScreensNeverStart()=>Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(true,[Stage.Battle,Stage.Retry],true));
+    [Fact] public void UnrecognizedInitialScreenStops()=>Assert.Throws<InvalidOperationException>(()=>StartStagePolicy.Resolve(false,[],false));
+}

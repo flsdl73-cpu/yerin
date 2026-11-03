@@ -18,7 +18,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
     }
     private Bitmap Capture()
     {
-        var next=window.Capture(); lastFrame?.Dispose(); lastFrame=next; return lastFrame;
+        var next=window.Capture(); lastFrame?.Dispose(); lastFrame=next; evidence.Clear(); return lastFrame;
     }
     private void Set(Stage value) { Stage=value; journal.Write($"단계: {value}"); Changed?.Invoke(value); }
     public async Task Run(string destination, bool skip, int limit, bool resume, CancellationToken token)
@@ -31,7 +31,7 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
             using var driver=new InterceptionInput(window);input=driver;
             journal.Write("3초 후 시작합니다. 게임 창을 활성화하세요. F10: 즉시 정지");
             for(int i=3;i>0;i--) {System.Media.SystemSounds.Asterisk.Play();await Task.Delay(1000,token);}
-            Set(resume?await Classify(token):Stage.Menu);
+            Set(await Classify(resume,token));
             while(true)
             {
                 token.ThrowIfCancellationRequested();
@@ -59,13 +59,14 @@ public sealed class Engine(Configuration config, GameWindow window, Vision visio
         }
         finally {input=null;lastFrame?.Dispose();lastFrame=null;run.Stop();}
     }
-    private async Task<Stage> Classify(CancellationToken token)
+    private async Task<Stage> Classify(bool resume,CancellationToken token)
     {
-        var frame=Capture(); var candidates=new List<Stage>();
+        var frame=Capture(); await Guard(frame,token); var candidates=new List<Stage>();
         foreach(var (name,stage) in new (string,Stage)[]{("result",Stage.Result),("retry",Stage.Retry),("enter",Stage.Enter),(destination,Stage.Destination),("menu",Stage.Abyss),("battle",Stage.Battle)})
             if((await Detect(frame,name,token)).Passed) candidates.Add(stage);
-        if(candidates.Count!=1) throw new InvalidOperationException("현재 단계가 불명확하거나 충돌합니다. 입력 없이 정지합니다.");
-        journal.Write("현재 화면 재분류",candidates[0].ToString());return candidates[0];
+        var mainConfirmed=candidates.Count==0 && (await Detect(frame,"chat",token)).Passed;
+        var selected=StartStagePolicy.Resolve(resume,candidates,mainConfirmed);
+        journal.Write("현재 화면 재분류",selected.ToString());return selected;
     }
     private async Task Menu(CancellationToken token)
     {

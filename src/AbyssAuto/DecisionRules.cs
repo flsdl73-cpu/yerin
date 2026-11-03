@@ -41,3 +41,32 @@ public static class WhiteTextRules
 {
     public static bool IsGlyph(byte r,byte g,byte b) => Math.Min(r,Math.Min(g,b))>=190 && Math.Max(r,Math.Max(g,b))-Math.Min(r,Math.Min(g,b))<=60;
 }
+
+public enum Stage { Menu, Abyss, Destination, Enter, Battle, Result, Retry }
+
+public static class RecognitionRules
+{
+    public static bool HasTextEvidence(IEnumerable<string> actual, string[] primary, string[] required, bool fuzzy=false)
+    {
+        var lines=actual.ToArray();
+        return primary.Any(phrase=>lines.Any(line=>TextRules.Matches(line,phrase,fuzzy)))
+            && required.All(phrase=>lines.Any(line=>TextRules.Matches(line,phrase)));
+    }
+}
+
+public static class StartStagePolicy
+{
+    public static Stage Resolve(bool resume,IReadOnlyCollection<Stage> recognized,bool mainConfirmed)
+    {
+        if(recognized.Count>1)throw new InvalidOperationException("현재 단계 판정이 충돌합니다. 입력 없이 정지합니다.");
+        if(recognized.Count==1)
+        {
+            var stage=recognized.Single();
+            if(resume||stage==Stage.Abyss)return stage;
+            var name=stage switch { Stage.Battle=>"전투",Stage.Result=>"결과",Stage.Retry=>"보상",Stage.Enter=>"입장 상세",Stage.Destination=>"목적지 선택",_=>"메뉴" };
+            throw new InvalidOperationException($"현재 {name} 화면입니다. '현재 화면 재판별 후 시작'을 켜고 시작하세요.");
+        }
+        if(!resume&&mainConfirmed)return Stage.Menu;
+        throw new InvalidOperationException("현재 단계가 불명확합니다. 입력 없이 정지합니다.");
+    }
+}

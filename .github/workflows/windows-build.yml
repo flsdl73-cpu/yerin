@@ -22,7 +22,7 @@ jobs:
         run: ./build.ps1
       - name: Validate saved screens with Windows OCR when available
         continue-on-error: true
-        timeout-minutes: 5
+        timeout-minutes: 2
         shell: pwsh
         run: ./tools/validate-windows-ci.ps1
       - name: Upload Windows download

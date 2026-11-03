@@ -6,9 +6,9 @@ public static class OfflineValidator
 {
     private static readonly Dictionary<string,string[]> Expected=new()
     {
-        ["chat"]=["main","battle"], ["menu"]=["menu"], ["abyss"]=["menu"],
+        ["chat"]=["main","battle","battle-live-01","battle-live-02"], ["menu"]=["menu"], ["abyss"]=["menu"],
         ["husang"]=["destinations"], ["kwanggi"]=["destinations"], ["moolgil"]=["destinations"],
-        ["enter"]=["enter"], ["result"]=["result"], ["retry"]=["reward"], ["battle"]=["battle"],
+        ["enter"]=["enter"], ["result"]=["result"], ["retry"]=["reward"], ["battle"]=["battle","battle-live-01","battle-live-02"],
         ["skip"]=[], ["purchase"]=[]
     };
     public static async Task<int> Run(string screenDirectory,string outputDirectory)
@@ -19,7 +19,7 @@ public static class OfflineValidator
         try
         {
             var config=new Configuration();var vision=new Vision(config);
-            string[] screens=["main","menu","destinations","enter","battle","result","reward"];
+            string[] screens=["main","menu","destinations","enter","battle","result","reward","battle-live-01","battle-live-02"];
             var rows=new List<object>();int failures=0,checks=0;
             foreach(var screen in screens)
             {

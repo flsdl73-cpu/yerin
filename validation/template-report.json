@@ -1,8 +1,38 @@
 {
   "opencv": "4.10.0",
-  "imageChecks": 42,
+  "imageChecks": 54,
   "failures": [],
   "records": [
+    {
+      "target": "abyss",
+      "screen": "battle-live-01",
+      "score": 0.05044666305184364,
+      "image": "a_abyss.png",
+      "bounds": [
+        965,
+        365,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "abyss",
+      "screen": "battle-live-02",
+      "score": -0.05050221085548401,
+      "image": "a_abyss.png",
+      "bounds": [
+        948,
+        364,
+        53,
+        60
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
     {
       "target": "abyss",
       "screen": "battle",
@@ -110,6 +140,36 @@
     },
     {
       "target": "husang",
+      "screen": "battle-live-01",
+      "score": 0.06939573585987091,
+      "image": "a_husang.png",
+      "bounds": [
+        720,
+        132,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
+      "screen": "battle-live-02",
+      "score": 0.050381794571876526,
+      "image": "a_husang.png",
+      "bounds": [
+        720,
+        132,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "husang",
       "screen": "battle",
       "score": -0.05685378238558769,
       "image": "a_husang.png",
@@ -206,6 +266,36 @@
       "bounds": [
         720,
         127,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "battle-live-01",
+      "score": 0.08124839514493942,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        745,
+        258,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "kwanggi",
+      "screen": "battle-live-02",
+      "score": 0.08621790260076523,
+      "image": "a_kwanggi.png",
+      "bounds": [
+        746,
+        257,
         497,
         90
       ],
@@ -320,6 +410,36 @@
     },
     {
       "target": "moolgil",
+      "screen": "battle-live-01",
+      "score": -0.11950478702783585,
+      "image": "a_moolgil.png",
+      "bounds": [
+        763,
+        352,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
+      "screen": "battle-live-02",
+      "score": 0.06668266654014587,
+      "image": "a_moolgil.png",
+      "bounds": [
+        763,
+        352,
+        497,
+        90
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "moolgil",
       "screen": "battle",
       "score": 0.10147843509912491,
       "image": "a_moolgil.png",
@@ -425,6 +545,36 @@
     },
     {
       "target": "enter",
+      "screen": "battle-live-01",
+      "score": 0.21990983188152313,
+      "image": "a_enter.png",
+      "bounds": [
+        810,
+        775,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
+      "screen": "battle-live-02",
+      "score": 0.08890260010957718,
+      "image": "a_enter.png",
+      "bounds": [
+        810,
+        775,
+        440,
+        46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "enter",
       "screen": "battle",
       "score": -0.050018493086099625,
       "image": "a_enter.png",
@@ -523,6 +673,36 @@
         794,
         440,
         46
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "battle-live-01",
+      "score": 0.16898226737976074,
+      "image": "touch.png",
+      "bounds": [
+        559,
+        782,
+        210,
+        32
+      ],
+      "threshold": 0.75,
+      "imagePassed": false,
+      "expectedImageMatch": false
+    },
+    {
+      "target": "result",
+      "screen": "battle-live-02",
+      "score": 0.16447041928768158,
+      "image": "touch.png",
+      "bounds": [
+        550,
+        806,
+        210,
+        32
       ],
       "threshold": 0.75,
       "imagePassed": false,

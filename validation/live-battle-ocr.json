@@ -1,0 +1,557 @@
+{
+  "source": "20261103-175920-040.json",
+  "oldExpected": "허상의 정박지 클리어",
+  "ocr": "+ 허상의 정박지 들리 | • 부활 6회 이내로 결」 | + | 허상의 | 정박지 | 들리 | • | 부활 | 6회 | 이내로 | 결」 | • 허상의 정박지 클리 | • 부활 6회 이내로 클리| | 클리 | 클리|",
+  "attempts": [
+    {
+      "Text": "+ 허상의 정박지 들리",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1063,
+          "Y": 233
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 194,
+          "Height": 26
+        },
+        "X": 1063,
+        "Y": 233,
+        "Width": 194,
+        "Height": 26,
+        "Left": 1063,
+        "Top": 233,
+        "Right": 1257,
+        "Bottom": 259,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "• 부활 6회 이내로 결」",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1131,
+          "Y": 262
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 128,
+          "Height": 17
+        },
+        "X": 1131,
+        "Y": 262,
+        "Width": 128,
+        "Height": 17,
+        "Left": 1131,
+        "Top": 262,
+        "Right": 1259,
+        "Bottom": 279,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "+",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1063,
+          "Y": 236
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 14,
+          "Height": 15
+        },
+        "X": 1063,
+        "Y": 236,
+        "Width": 14,
+        "Height": 15,
+        "Left": 1063,
+        "Top": 236,
+        "Right": 1077,
+        "Bottom": 251,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "허상의",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1085,
+          "Y": 233
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 59,
+          "Height": 22
+        },
+        "X": 1085,
+        "Y": 233,
+        "Width": 59,
+        "Height": 22,
+        "Left": 1085,
+        "Top": 233,
+        "Right": 1144,
+        "Bottom": 255,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "정박지",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1152,
+          "Y": 236
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 59,
+          "Height": 21
+        },
+        "X": 1152,
+        "Y": 236,
+        "Width": 59,
+        "Height": 21,
+        "Left": 1152,
+        "Top": 236,
+        "Right": 1211,
+        "Bottom": 257,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "들리",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1218,
+          "Y": 238
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 39,
+          "Height": 21
+        },
+        "X": 1218,
+        "Y": 238,
+        "Width": 39,
+        "Height": 21,
+        "Left": 1218,
+        "Top": 238,
+        "Right": 1257,
+        "Bottom": 259,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "•",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1131,
+          "Y": 267
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 5,
+          "Height": 4
+        },
+        "X": 1131,
+        "Y": 267,
+        "Width": 5,
+        "Height": 4,
+        "Left": 1131,
+        "Top": 267,
+        "Right": 1136,
+        "Bottom": 271,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "부활",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1141,
+          "Y": 262
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 26,
+          "Height": 14
+        },
+        "X": 1141,
+        "Y": 262,
+        "Width": 26,
+        "Height": 14,
+        "Left": 1141,
+        "Top": 262,
+        "Right": 1167,
+        "Bottom": 276,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "6회",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1171,
+          "Y": 263
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 20,
+          "Height": 14
+        },
+        "X": 1171,
+        "Y": 263,
+        "Width": 20,
+        "Height": 14,
+        "Left": 1171,
+        "Top": 263,
+        "Right": 1191,
+        "Bottom": 277,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "이내로",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1196,
+          "Y": 264
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 38,
+          "Height": 14
+        },
+        "X": 1196,
+        "Y": 264,
+        "Width": 38,
+        "Height": 14,
+        "Left": 1196,
+        "Top": 264,
+        "Right": 1234,
+        "Bottom": 278,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "결」",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1239,
+          "Y": 266
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 20,
+          "Height": 13
+        },
+        "X": 1239,
+        "Y": 266,
+        "Width": 20,
+        "Height": 13,
+        "Left": 1239,
+        "Top": 266,
+        "Right": 1259,
+        "Bottom": 279,
+        "IsEmpty": false
+      },
+      "Source": "original-1x"
+    },
+    {
+      "Text": "• 허상의 정박지 클리",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1063,
+          "Y": 235
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 193,
+          "Height": 21
+        },
+        "X": 1063,
+        "Y": 235,
+        "Width": 193,
+        "Height": 21,
+        "Left": 1063,
+        "Top": 235,
+        "Right": 1256,
+        "Bottom": 256,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "• 부활 6회 이내로 클리|",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1131,
+          "Y": 262
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 141,
+          "Height": 14
+        },
+        "X": 1131,
+        "Y": 262,
+        "Width": 141,
+        "Height": 14,
+        "Left": 1131,
+        "Top": 262,
+        "Right": 1272,
+        "Bottom": 276,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "•",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1063,
+          "Y": 239
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 14,
+          "Height": 14
+        },
+        "X": 1063,
+        "Y": 239,
+        "Width": 14,
+        "Height": 14,
+        "Left": 1063,
+        "Top": 239,
+        "Right": 1077,
+        "Bottom": 253,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "허상의",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1084,
+          "Y": 235
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 60,
+          "Height": 21
+        },
+        "X": 1084,
+        "Y": 235,
+        "Width": 60,
+        "Height": 21,
+        "Left": 1084,
+        "Top": 235,
+        "Right": 1144,
+        "Bottom": 256,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "정박지",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1151,
+          "Y": 235
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 59,
+          "Height": 21
+        },
+        "X": 1151,
+        "Y": 235,
+        "Width": 59,
+        "Height": 21,
+        "Left": 1151,
+        "Top": 235,
+        "Right": 1210,
+        "Bottom": 256,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "클리",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1217,
+          "Y": 235
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 39,
+          "Height": 21
+        },
+        "X": 1217,
+        "Y": 235,
+        "Width": 39,
+        "Height": 21,
+        "Left": 1217,
+        "Top": 235,
+        "Right": 1256,
+        "Bottom": 256,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "•",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1131,
+          "Y": 267
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 5,
+          "Height": 5
+        },
+        "X": 1131,
+        "Y": 267,
+        "Width": 5,
+        "Height": 5,
+        "Left": 1131,
+        "Top": 267,
+        "Right": 1136,
+        "Bottom": 272,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "부활",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1141,
+          "Y": 262
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 27,
+          "Height": 14
+        },
+        "X": 1141,
+        "Y": 262,
+        "Width": 27,
+        "Height": 14,
+        "Left": 1141,
+        "Top": 262,
+        "Right": 1168,
+        "Bottom": 276,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "6회",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1171,
+          "Y": 262
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 21,
+          "Height": 14
+        },
+        "X": 1171,
+        "Y": 262,
+        "Width": 21,
+        "Height": 14,
+        "Left": 1171,
+        "Top": 262,
+        "Right": 1192,
+        "Bottom": 276,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "이내로",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1196,
+          "Y": 262
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 39,
+          "Height": 14
+        },
+        "X": 1196,
+        "Y": 262,
+        "Width": 39,
+        "Height": 14,
+        "Left": 1196,
+        "Top": 262,
+        "Right": 1235,
+        "Bottom": 276,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    },
+    {
+      "Text": "클리|",
+      "Bounds": {
+        "Location": {
+          "IsEmpty": false,
+          "X": 1239,
+          "Y": 263
+        },
+        "Size": {
+          "IsEmpty": false,
+          "Width": 33,
+          "Height": 13
+        },
+        "X": 1239,
+        "Y": 263,
+        "Width": 33,
+        "Height": 13,
+        "Left": 1239,
+        "Top": 263,
+        "Right": 1272,
+        "Bottom": 276,
+        "IsEmpty": false
+      },
+      "Source": "original-2x"
+    }
+  ]
+}

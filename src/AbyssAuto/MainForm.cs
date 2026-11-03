@@ -19,7 +19,7 @@ public sealed class MainForm : Form
     private readonly List<Control> locked=[];
     public MainForm()
     {
-        Text="어비스 오토 · 화면 검증 우선";Width=830;Height=570;MinimumSize=new(780,530);
+        Text=$"어비스 오토 · {Application.ProductVersion.Split('+')[0]} · 화면 검증 우선";Width=830;Height=570;MinimumSize=new(780,530);
         Font=new Font("맑은 고딕",10);BackColor=Color.FromArgb(245,247,245);
         destination.Items.AddRange(["허상의 정박지","광기의 동굴","흩어진 물길"]);destination.SelectedIndex=0;
         var root=new TableLayoutPanel {Dock=DockStyle.Fill,Padding=new Padding(20),RowCount=5,ColumnCount=1};

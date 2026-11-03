@@ -1,7 +1,6 @@
 using System.Text.Json;
 namespace AbyssAuto;
 
-public enum Stage { Menu, Abyss, Destination, Enter, Battle, Result, Retry }
 public sealed record Region(int Left, int Top, int Right, int Bottom)
 {
     public Rectangle Rectangle => Rectangle.FromLTRB(Left, Top, Right, Bottom);
@@ -12,6 +11,7 @@ public sealed class Target
     public Region? OcrRegion { get; set; }
     public bool WhiteTextFallback { get; set; }
     public string[] Text { get; set; } = [];
+    public string[] RequiredText { get; set; } = [];
     public string[] Images { get; set; } = [];
     public double Threshold { get; set; } = .75;
     public int MinimumScore { get; set; } = 2;

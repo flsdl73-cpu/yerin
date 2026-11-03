@@ -54,9 +54,10 @@ public sealed class Vision(Configuration config)
         var ocrArea=target.OcrRegion?.Rectangle ?? area;
         var lines=target.Text.Length==0 ? new List<TextHit>() : await Read(frame,ocrArea,1,token);
         bool Match(TextHit h)=>target.Text.Any(t=>Matches(h.Text,t,target.Fuzzy));
-        if (target.Text.Length>0 && (!lines.Any(Match) || name=="menu" && MenuCount(lines)<3))
+        bool HasEvidence()=>RecognitionRules.HasTextEvidence(lines.Select(l=>l.Text),target.Text,target.RequiredText,target.Fuzzy);
+        if (target.Text.Length>0 && (!HasEvidence() || name=="menu" && MenuCount(lines)<3))
             lines.AddRange(await Read(frame,ocrArea,2,token));
-        if(target.WhiteTextFallback && target.Text.Length>0 && !lines.Any(Match))
+        if(target.WhiteTextFallback && target.Text.Length>0 && !HasEvidence())
             lines.AddRange(await Read(frame,ocrArea,2,token,whiteText:true));
         var textHit=lines.FirstOrDefault(Match);
         if(name=="menu")
@@ -81,7 +82,7 @@ public sealed class Vision(Configuration config)
             if(double.IsFinite(best) && best>imageScore) { imageScore=best; imageName=file; imageBounds=new(area.X+position.X,area.Y+position.Y,template.Width,template.Height); }
         }
         var imagePassed=imageScore>=target.Threshold && imageName!=null;
-        var textPassed=textHit!=null;
+        var textPassed=textHit!=null && HasEvidence();
         var conflict=imagePassed && textPassed && !imageBounds.IntersectsWith(textHit!.Bounds);
         var candidate=imagePassed ? imageBounds : textHit?.Bounds ?? Rectangle.Empty;
         bool color=false;
@@ -99,7 +100,7 @@ public sealed class Vision(Configuration config)
         }
         var score=(textPassed?2:0)+(imagePassed?2:0)+(color?1:0);
         var passed=!conflict && !candidate.IsEmpty && score>=target.MinimumScore && (!target.RequireText||textPassed) && (!target.RequireImage||imagePassed) && (!target.RequireColor||color);
-        return new(name,passed,candidate,score,string.Join(" | ",lines.Select(l=>l.Text).Distinct()),imageName,imageScore,color,conflict?"OCR과 사진 위치 충돌":passed?"합격":"근거 부족",lines.ToArray());
+        return new(name,passed,candidate,score,string.Join(" | ",lines.Select(l=>l.Text).Distinct()),imageName,imageScore,color,conflict?"OCR과 사진 위치 충돌":passed?"합격":textHit!=null && !HasEvidence()?"추가 문구 근거 부족":"근거 부족",lines.ToArray());
     }
     private static int MenuCount(List<TextHit> lines)
     {
