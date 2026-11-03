@@ -163,15 +163,13 @@
       "Bottom": 284
     },
     "Text": [
-      "허상의 정박지"
+      "정박지"
     ],
     "Images": [],
     "Threshold": 0.75,
     "MinimumScore": 2,
     "RequireText": true,
-    "RequiredText": [
-      "6회"
-    ],
+    "RequiredText": [],
     "OcrFilter": "dither-gold",
     "WhiteTextFallback": true
   },
