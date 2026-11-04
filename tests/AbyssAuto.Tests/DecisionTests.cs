@@ -227,11 +227,28 @@ public class LatestBattleOcrTests
 
 public class PurchaseChargeRegressionTests
 {
-    [Theory][InlineData("충전 완료",false)][InlineData("충전",false)][InlineData("충전하시겠습니까?",true)][InlineData("충전할까요?",true)][InlineData("재료가 부족합니다",true)][InlineData("구매 확인",true)]
+    [Theory][InlineData("충전 완료",false)][InlineData("충전",false)][InlineData("충전하시겠습니까?",true)][InlineData("충전할까요?",true)][InlineData("재료가 부족합니다",true)][InlineData("구매 확인",true)][InlineData("구매",false)][InlineData("결제",false)][InlineData("구매 합니다",false)][InlineData("아이템을 구매하시겠습니까?",true)]
     public void ProductionPurchasePhrasesDistinguishChargeTitle(string ocr,bool expected)
     {
         using var doc=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"targets.json")));
         var phrases=doc.RootElement.GetProperty("purchase").GetProperty("Text").EnumerateArray().Select(x=>x.GetString()!).ToArray();
         Assert.Equal(expected,RecognitionRules.HasTextEvidence([ocr],phrases,[]));
+    }
+}
+
+public class PurchaseChatRegionTests
+{
+    [Fact]public void SuppliedTradeChatIsOutsideProductionPurchaseOcrRegion()
+    {
+        using var config=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"targets.json")));
+        var target=config.RootElement.GetProperty("purchase");var r=target.GetProperty("OcrRegion");
+        var region=System.Drawing.Rectangle.FromLTRB(r.GetProperty("Left").GetInt32(),r.GetProperty("Top").GetInt32(),r.GetProperty("Right").GetInt32(),r.GetProperty("Bottom").GetInt32());
+        using var data=System.Text.Json.JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"purchase-chat-ocr.json")));
+        var hits=data.RootElement.EnumerateArray().Where(x=>x.GetProperty("Text").GetString()!.Contains("구매")).ToArray();Assert.NotEmpty(hits);
+        foreach(var hit in hits)
+        {
+            var b=hit.GetProperty("Bounds");var box=new System.Drawing.Rectangle(b.GetProperty("X").GetInt32(),b.GetProperty("Y").GetInt32(),b.GetProperty("Width").GetInt32(),b.GetProperty("Height").GetInt32());
+            Assert.False(region.IntersectsWith(box));
+        }
     }
 }
